@@ -159,9 +159,6 @@ function UpdateSmoothedMovementDirection ()
 	if (grounded)
 	{
 		if (v>0){
-			Debug.Log("Jumping: "+jumping+". v: "+v);
-			//jumping=true;
-			//_characterState = CharacterState.Jumping;
 			verticalSpeed = CalculateJumpVerticalSpeed (jumpHeight);
 		}
 		// Lock camera for short period when transitioning moving & standing still
