@@ -138,8 +138,8 @@ function UpdateSmoothedMovementDirection ()
 	// Always orthogonal to the forward vector
 	var right = Vector3(forward.z, 0, -forward.x);
 
-	//var v = Input.GetAxisRaw("Vertical");
-	var v=0;
+	var v = Input.GetAxisRaw("Vertical");
+	//var v=0;
 	var h = Input.GetAxisRaw("Horizontal");
 
 	// Are we moving backwards or looking backwards
@@ -152,12 +152,18 @@ function UpdateSmoothedMovementDirection ()
 	isMoving = Mathf.Abs (h) > 0.1 || Mathf.Abs (v) > 0.1;
 		
 	// Target direction relative to the camera
-	var targetDirection = h * right + v * forward;
-	Debug.Log("target direction: "+targetDirection+" h:"+h+" v:"+v);
+	var targetDirection = h * right + 0 * forward;
+	//Debug.Log("target direction: "+targetDirection+" h:"+h+" v:"+v+" right: "+right+" forward: "+forward);
 	
 	// Grounded controls
 	if (grounded)
 	{
+		if (v>0){
+			Debug.Log("Jumping: "+jumping+". v: "+v);
+			//jumping=true;
+			//_characterState = CharacterState.Jumping;
+			verticalSpeed = CalculateJumpVerticalSpeed (jumpHeight);
+		}
 		// Lock camera for short period when transitioning moving & standing still
 		lockCameraTimer += Time.deltaTime;
 		if (isMoving != wasMoving)
@@ -263,7 +269,7 @@ function ApplyGravity ()
 			SendMessage("DidJumpReachApex", SendMessageOptions.DontRequireReceiver);
 		}
 	
-		if (IsGrounded ())
+		if ((IsGrounded ()) && !(Input.GetAxisRaw("Vertical")>0))
 			verticalSpeed = 0.0;
 		else
 			verticalSpeed -= gravity * Time.deltaTime;
@@ -313,6 +319,7 @@ function Update() {
 	
 	// Calculate actual motion
 	var movement = moveDirection * moveSpeed + Vector3 (0, verticalSpeed, 0) + inAirVelocity;
+	//Debug.Log("Movement: "+movement);
 	movement *= Time.deltaTime;
 	
 	// Move the controller
@@ -408,6 +415,7 @@ function IsGrounded () {
 }
 
 function GetDirection () {
+	Debug.Log(moveDirection);
 	return moveDirection;
 }
 
