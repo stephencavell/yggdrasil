@@ -138,7 +138,8 @@ function UpdateSmoothedMovementDirection ()
 	// Always orthogonal to the forward vector
 	var right = Vector3(forward.z, 0, -forward.x);
 
-	var v = Input.GetAxisRaw("Vertical");
+	//var v = Input.GetAxisRaw("Vertical");
+	var v=0;
 	var h = Input.GetAxisRaw("Horizontal");
 
 	// Are we moving backwards or looking backwards
@@ -152,6 +153,7 @@ function UpdateSmoothedMovementDirection ()
 		
 	// Target direction relative to the camera
 	var targetDirection = h * right + v * forward;
+	Debug.Log("target direction: "+targetDirection+" h:"+h+" v:"+v);
 	
 	// Grounded controls
 	if (grounded)
