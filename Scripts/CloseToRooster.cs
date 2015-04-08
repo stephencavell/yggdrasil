@@ -7,8 +7,8 @@ public class CloseToRooster : MonoBehaviour {
 	private GameObject roosterObject;
 	
 	private int position;
-	private int newPositionX1 = 134;
-	private int newPositionX2 = 20;
+	public int newPositionX1 = 134;
+	public int newPositionX2 = 20;
 
 	// Use this for initialization
 	void Start () {
