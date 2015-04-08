@@ -271,7 +271,6 @@ private function UpdateFunction () {
 	// We were grounded but just loosed grounding
 	if (grounded && !IsGroundedTest()) {
 		grounded = false;
-		
 		// Apply inertia from platform
 		if (movingPlatform.enabled &&
 			(movingPlatform.movementTransfer == MovementTransferOnJump.InitTransfer ||

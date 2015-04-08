@@ -90,8 +90,13 @@ private var lastGroundedTime = 0.0;
 
 private var isControllable = true;
 
+private var audioC : PlayerAudioController;
+
 function Awake ()
 {
+	
+	maincamera = GameObject.FindGameObjectWithTag("Player");
+	audioC = maincamera.GetComponent(PlayerAudioController);
 	moveDirection = transform.TransformDirection(Vector3.forward);
 	
 	_animation = GetComponent(Animation);
@@ -139,7 +144,6 @@ function UpdateSmoothedMovementDirection ()
 	var right = Vector3(forward.z, 0, -forward.x);
 
 	var v = Input.GetAxisRaw("Vertical");
-	//var v=0;
 	var h = Input.GetAxisRaw("Horizontal");
 
 	// Are we moving backwards or looking backwards
@@ -158,8 +162,11 @@ function UpdateSmoothedMovementDirection ()
 	// Grounded controls
 	if (grounded)
 	{
+		//Debug.Log("V: "+v);
 		if (v>0){
 			verticalSpeed = CalculateJumpVerticalSpeed (jumpHeight);
+			SendMessage("DidJump", SendMessageOptions.DontRequireReceiver);
+			audioC.PlayJumpStart();
 		}
 		// Lock camera for short period when transitioning moving & standing still
 		lockCameraTimer += Time.deltaTime;
@@ -197,16 +204,21 @@ function UpdateSmoothedMovementDirection ()
 		// Pick speed modifier
 		if (Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift))
 		{
+			audioC.PlayRunning();
 			targetSpeed *= runSpeed;
 			_characterState = CharacterState.Running;
 		}
 		else if (Time.time - trotAfterSeconds > walkTimeStart)
 		{
+			audioC.PlayTrotting();
 			targetSpeed *= trotSpeed;
 			_characterState = CharacterState.Trotting;
 		}
 		else
 		{
+			if(h!=0){
+				audioC.PlayWalking();
+			}
 			targetSpeed *= walkSpeed;
 			_characterState = CharacterState.Walking;
 		}
@@ -245,6 +257,7 @@ function ApplyJumping ()
 		// - With a timeout so you can press the button slightly before landing		
 		if (canJump && Time.time < lastJumpButtonTime + jumpTimeout) {
 			verticalSpeed = CalculateJumpVerticalSpeed (jumpHeight);
+			audioC.PlayJumpStart();
 			SendMessage("DidJump", SendMessageOptions.DontRequireReceiver);
 		}
 	}
@@ -267,9 +280,13 @@ function ApplyGravity ()
 		}
 	
 		if ((IsGrounded ()) && !(Input.GetAxisRaw("Vertical")>0))
+		{
 			verticalSpeed = 0.0;
+		}
 		else
+		{
 			verticalSpeed -= gravity * Time.deltaTime;
+		}
 	}
 }
 
@@ -316,7 +333,6 @@ function Update() {
 	
 	// Calculate actual motion
 	var movement = moveDirection * moveSpeed + Vector3 (0, verticalSpeed, 0) + inAirVelocity;
-	//Debug.Log("Movement: "+movement);
 	movement *= Time.deltaTime;
 	
 	// Move the controller
@@ -386,6 +402,7 @@ function Update() {
 		inAirVelocity = Vector3.zero;
 		if (jumping)
 		{
+			audioC.PlayJumpLand();
 			jumping = false;
 			SendMessage("DidLand", SendMessageOptions.DontRequireReceiver);
 		}
