@@ -3,6 +3,7 @@ private var audioBarLength : float;
 private var maxAudio : float;
 private var curAudio : float;
 private var maxBarWidth : float;
+private var originalRoosterQuickness : float;
 
 public var foregroundTexture : Texture2D;
 public var backgroundTexture : Texture2D;
@@ -20,7 +21,8 @@ function Start () {
 	audioBarLength = 0;
 	maxAudio = 200;
 	curAudio = audioC.GetCurrentSample();
-	roosterQuickness = 4000;
+	roosterQuickness = 2000;
+	originalRoosterQuickness = roosterQuickness;
 	foregroundStyle = GUIStyle();
 	foregroundStyle.stretchWidth = true;
 	foregroundStyle.stretchHeight = true;
@@ -56,4 +58,8 @@ function audioBarLengthUpdate(){
 		audioBarLength = maxAudio;
 	}
 	roosterQuickness-=1;
+}
+
+function ResetRoosterTime(){
+	roosterQuickness=originalRoosterQuickness;
 }

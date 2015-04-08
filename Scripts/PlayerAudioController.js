@@ -164,10 +164,10 @@ function PlayRaven() {
 function PlayWalking() {
 	//Debug.Log("Walking");
 	if(trottingAudio.isPlaying==true){
-		trottingAudio.Stop();
+		trottingAudio.Pause();
 	}
 	if(runningAudio.isPlaying==true){
-		runningAudio.Stop();
+		runningAudio.Pause();
 	}
 	if(walkingAudio.isPlaying==false){
     	walkingAudio.Play();
@@ -175,12 +175,12 @@ function PlayWalking() {
 }
 
 function PlayTrotting() {
-	Debug.Log("Trotting");
+	//Debug.Log("Trotting");
 	if(walkingAudio.isPlaying==true){
-		walkingAudio.Stop();
+		walkingAudio.Pause();
 	}
 	if(runningAudio.isPlaying==true){
-		runningAudio.Stop();
+		runningAudio.Pause();
 	}
 	if(trottingAudio.isPlaying==false){
     	trottingAudio.Play();
@@ -188,12 +188,12 @@ function PlayTrotting() {
 }
 
 function PlayRunning() {
-	Debug.Log("Running");
+	//Debug.Log("Running");
 	if(walkingAudio.isPlaying==true){
-		walkingAudio.Stop();
+		walkingAudio.Pause();
 	}
 	if(trottingAudio.isPlaying==true){
-		trottingAudio.Stop();
+		trottingAudio.Pause();
 	}
 	if(runningAudio.isPlaying==false){
     	runningAudio.Play();
@@ -217,6 +217,12 @@ function PlayJumpLand() {
 function PlayRoosterCrow() {
 	if(roosterCrowAudio.isPlaying==false){
     	roosterCrowAudio.Play();
+    }
+}
+
+function PauseRoosterCrow() {
+	if(roosterCrowAudio.isPlaying){
+    	roosterCrowAudio.Pause();
     }
 }
 
