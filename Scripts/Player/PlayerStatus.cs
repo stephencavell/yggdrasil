@@ -2,18 +2,12 @@
 using System.Collections;
 
 public class PlayerStatus : MonoBehaviour {
-	public int checkpoint1X;
-	public int checkpoint1Y;
-	public int checkpoint2X;
-	public int checkpoint2Y;
-	public int checkpoint3X;
-	public int checkpoint3Y;
-	public int checkpoint4X;
-	public int checkpoint4Y;
-	public int checkpoint5X;
-	public int checkpoint5Y;
-	public int checkpoint6X;
-	public int checkpoint6Y;
+	public Vector3 checkpoint1;
+	public Vector3 checkpoint2;
+	public Vector3 checkpoint3;
+	public Vector3 checkpoint4;
+	public Vector3 checkpoint5;
+	public Vector3 checkpoint6;
 
 	private CheckpointManager playerObject;
 
@@ -31,23 +25,17 @@ public class PlayerStatus : MonoBehaviour {
 		int checkpoint = playerObject.GetCheckpoint();
 		Vector3 newPosition = this.transform.position;
 		if (checkpoint >= 6) {
-			newPosition.x = checkpoint6X;
-			newPosition.y = checkpoint6Y;
+			newPosition = checkpoint6;
 		} else if (checkpoint == 5) {
-			newPosition.x = checkpoint5X;
-			newPosition.y = checkpoint5Y;
+			newPosition = checkpoint5;
 		} else if (checkpoint == 4) {
-			newPosition.x = checkpoint4X;
-			newPosition.y = checkpoint4Y;
+			newPosition = checkpoint4;
 		} else if (checkpoint == 3) {
-			newPosition.x = checkpoint3X;
-			newPosition.y = checkpoint3Y;
+			newPosition = checkpoint3;
 		} else if (checkpoint == 2) {
-			newPosition.x = checkpoint2X;
-			newPosition.y = checkpoint2Y;
+			newPosition = checkpoint2;
 		} else {
-			newPosition.x = checkpoint1X;
-			newPosition.y = checkpoint1Y;
+			newPosition = checkpoint1;
 		}
 		this.transform.position = newPosition;
 	}

@@ -19,7 +19,7 @@ private var roosterScript : GameObject;
 
 function Start () {
 	audioC = GetComponent(PlayerAudioController);
-	roosterScript = GameObject.FindGameObjectWithTag("Rooster");
+	roosterScript = GameObject.Find("RoosterSpace");
 	audioBarLength = 0;
 	maxAudio = 200;
 	curAudio = audioC.GetCurrentSample();
@@ -59,8 +59,17 @@ function audioBarLengthUpdate(){
 	if(audioBarLength>maxAudio){
 		audioBarLength = maxAudio;
 	}
-	Debug.Log("Audio Bar Length: "+audioBarLength+".  Rooster Quickness: "+roosterQuickness+".  Max Audio: "+maxAudio);
-	if(audioBarLength>10){
+	if(audioBarLength>=900){
+		roosterQuickness-=6;
+	} else if(audioBarLength>=700){
+		roosterQuickness-=5;
+	} else if(audioBarLength>=500){
+		roosterQuickness-=4; 
+	} else if(audioBarLength>=300){
+		roosterQuickness-=3;
+	} else if(audioBarLength>=100){
+		roosterQuickness-=2;
+	} else if(audioBarLength>5){
 		roosterQuickness-=1;
 	}
 	if(roosterQuickness<=0){
