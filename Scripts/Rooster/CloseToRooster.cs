@@ -8,14 +8,26 @@ public class CloseToRooster : MonoBehaviour {
 	private CheckpointManager checkpointManager;
 	
 	private int position;
-	public int newPositionX1 = 134;
-	public int newPositionX2 = 20;
+	public int newPositionX1;
+	public int newPositionY1;
 	public Vector3 checkpoint1;
 	public Vector3 checkpoint2;
 	public Vector3 checkpoint3;
 	public Vector3 checkpoint4;
 	public Vector3 checkpoint5;
 	public Vector3 checkpoint6;
+	float StartPointX = 0;
+	float StartPointY = 0;
+	float ControlPointX = 100;
+	float ControlPointY = 30;
+	float EndPointX = 50;
+	float EndPointY = 0;
+	float CurveX;
+	float CurveY;
+	float BezierTime = 0;
+	Transform mySphere;
+	bool flying;
+	bool roosterSound;
 
 	// Use this for initialization
 	void Start () {
@@ -23,30 +35,49 @@ public class CloseToRooster : MonoBehaviour {
 		playerObject = GameObject.FindGameObjectWithTag("Player");
 		roosterObject = GameObject.FindGameObjectWithTag("Rooster");
 		checkpointManager = playerObject.GetComponent<CheckpointManager>();
+		StartPointX = roosterObject.transform.position.x;
+		StartPointY = roosterObject.transform.position.y;
+		EndPointX = newPositionX1;
+		EndPointY = newPositionY1;
+		flying = false;
+		roosterSound = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		PlayRoosterCrow();
-		//Debug.Log("This Transform Position: "+transform.position);
+		if(flying == true){
+			BezierCurve();
+		}
+		if(roosterSound==true){
+			PlayRoosterCrow();
+		}
 	}
 
 	void OnTriggerEnter(Collider other)
 	{
 		if(other.gameObject.tag == "Player")
 		{
-			if(position==0){
-				playerObject.SendMessage("ResetRoosterTime");
-				Vector3 newPosition = roosterObject.transform.position;
-				newPosition.x = newPositionX1;
-				newPosition.y = newPositionX2;
-				roosterObject.transform.position = newPosition;
-				position++;
-			} else if(position==1){
-				Debug.Log("IN HERE");
-				playerObject.SendMessage("PauseRoosterCrow");
-				Destroy(this);
-				Destroy(roosterObject);
+			if(flying==false){
+				if(position==0){
+					playerObject.SendMessage("ResetRoosterTime");
+					//Vector3 newPosition = roosterObject.transform.position;
+					//newPosition.x = newPositionX1;
+					//newPosition.y = newPositionX2;
+					//roosterObject.transform.position = newPosition;
+					EndPointX = newPositionX1;
+					EndPointY = newPositionY1;
+					flying = true;
+					playerObject.SendMessage("PauseRoosterCrow");
+					roosterSound = false;
+					position++;
+				} else if(position==1){
+					Debug.Log("IN HERE");
+					playerObject.SendMessage("PauseRoosterCrow");
+					Destroy(this);
+					Destroy(roosterObject);
+					roosterSound = false;
+				}
 			}
 		}
 	}
@@ -72,5 +103,23 @@ public class CloseToRooster : MonoBehaviour {
 			newPosition = checkpoint1;
 		}
 		roosterObject.transform.position = newPosition;
+	}
+
+	void BezierCurve(){
+		BezierTime = BezierTime + Time.deltaTime;
+		if (BezierTime >= 1) {
+			BezierTime = 0;
+		}
+		
+		CurveX = (((1-BezierTime)*(1-BezierTime)) * StartPointX) + (2 * BezierTime * (1 - BezierTime) * ControlPointX) + ((BezierTime * BezierTime) * EndPointX);
+		CurveY = (((1-BezierTime)*(1-BezierTime)) * StartPointY) + (2 * BezierTime * (1 - BezierTime) * ControlPointY) + ((BezierTime * BezierTime) * EndPointY);
+		roosterObject.transform.position = new Vector3(CurveX, CurveY, 0);
+		Debug.Log ("Flying: "+flying+".  Rooster Object: "+roosterObject.transform.position.x+".  New Position: "+newPositionX1);
+		if(roosterObject.transform.position.x >= newPositionX1-5){
+			Debug.Log ("Done");
+			flying = false;
+			roosterSound = true;
+			roosterObject.transform.position = new Vector3(newPositionX1, newPositionY1, 0);
+		}
 	}
 }
