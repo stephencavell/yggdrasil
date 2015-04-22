@@ -1,5 +1,4 @@
 
-// Require a character controller to be attached to the same game object
 @script RequireComponent(CharacterController)
 
 public var idleAnimation : AnimationClip;
@@ -102,13 +101,8 @@ function Awake ()
 	_animation = GetComponent(Animation);
 	if(!_animation)
 		Debug.Log("The character you would like to control doesn't have animations. Moving her might look weird.");
+		
 	
-	/*
-public var idleAnimation : AnimationClip;
-public var walkAnimation : AnimationClip;
-public var runAnimation : AnimationClip;
-public var jumpPoseAnimation : AnimationClip;	
-	*/
 	if(!idleAnimation) {
 		_animation = null;
 		Debug.Log("No idle animation found. Turning off animations.");
@@ -339,15 +333,21 @@ function Update() {
 	var controller : CharacterController = GetComponent(CharacterController);
 	collisionFlags = controller.Move(movement);
 	
+	Debug.Log("Animation: "+_animation+".  State: "+_characterState);
+	
 	// ANIMATION sector
 	if(_animation) {
+		Debug.Log("In Here 1.  Character State: ");
 		if(_characterState == CharacterState.Jumping) 
 		{
+			Debug.Log("In Here 2");
 			if(!jumpingReachedApex) {
+				Debug.Log("In Here 3");
 				_animation[jumpPoseAnimation.name].speed = jumpAnimationSpeed;
 				_animation[jumpPoseAnimation.name].wrapMode = WrapMode.ClampForever;
 				_animation.CrossFade(jumpPoseAnimation.name);
 			} else {
+				Debug.Log("In Here 4");
 				_animation[jumpPoseAnimation.name].speed = -landAnimationSpeed;
 				_animation[jumpPoseAnimation.name].wrapMode = WrapMode.ClampForever;
 				_animation.CrossFade(jumpPoseAnimation.name);				
@@ -355,11 +355,14 @@ function Update() {
 		} 
 		else 
 		{
+			Debug.Log("In Here 3.  Velocity: "+controller.velocity.sqrMagnitude);
 			if(controller.velocity.sqrMagnitude < 0.1) {
+				Debug.Log("In Here 4");
 				_animation.CrossFade(idleAnimation.name);
 			}
 			else 
 			{
+				Debug.Log("In Here 5");
 				if(_characterState == CharacterState.Running) {
 					_animation[runAnimation.name].speed = Mathf.Clamp(controller.velocity.magnitude, 0.0, runMaxAnimationSpeed);
 					_animation.CrossFade(runAnimation.name);	
@@ -379,10 +382,11 @@ function Update() {
 	// ANIMATION sector
 	
 	// Set rotation to the move direction
+	
 	if (IsGrounded())
 	{
 		
-		transform.rotation = Quaternion.LookRotation(moveDirection);
+		//transform.rotation = Quaternion.LookRotation(moveDirection);
 			
 	}	
 	else
@@ -391,9 +395,10 @@ function Update() {
 		xzMove.y = 0;
 		if (xzMove.sqrMagnitude > 0.001)
 		{
-			transform.rotation = Quaternion.LookRotation(xzMove);
+			//transform.rotation = Quaternion.LookRotation(xzMove);
 		}
 	}	
+	
 	
 	// We are in jump mode but just became grounded
 	if (IsGrounded())
@@ -461,4 +466,3 @@ function Reset ()
 {
 	gameObject.tag = "Player";
 }
-
