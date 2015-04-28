@@ -30,11 +30,15 @@ public class CloseToRooster : MonoBehaviour {
 	bool roosterSound;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		position = 0;
-		playerObject = GameObject.FindGameObjectWithTag("Player");
 		roosterObject = GameObject.FindGameObjectWithTag("Rooster");
+		playerObject = GameObject.FindGameObjectWithTag("Player");
 		checkpointManager = playerObject.GetComponent<CheckpointManager>();
+		Debug.Log ("Rooster Object: "+roosterObject);
+	}
+
+	void start(){
 		StartPointX = roosterObject.transform.position.x;
 		StartPointY = roosterObject.transform.position.y;
 		EndPointX = newPositionX1;
@@ -54,8 +58,9 @@ public class CloseToRooster : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter(Collider other)
+	void OnTriggerEnter2D(Collider2D other)
 	{
+		Debug.Log ("Collided With Rooster");
 		if(other.gameObject.tag == "Player")
 		{
 			if(flying==false){

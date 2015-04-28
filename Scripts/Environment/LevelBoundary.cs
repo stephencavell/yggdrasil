@@ -17,7 +17,7 @@ public class LevelBoundary : MonoBehaviour {
 		//Debug.Log("This Transform Position: "+transform.position);
 	}
 	
-	void OnTriggerEnter(Collider other)
+	void OnTriggerEnter2D(Collider2D other)
 	{
 		if(other.gameObject.tag == "Player")
 		{

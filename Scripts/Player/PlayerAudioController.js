@@ -201,14 +201,14 @@ function PlayRunning() {
 }
 
 function PlayJumpStart() {
-	Debug.Log("Jumped");
+	//Debug.Log("Jumped");
 	if(jumpStartAudio.isPlaying==false){
     	jumpStartAudio.Play();
     }
 }
 
 function PlayJumpLand() {
-	Debug.Log("Landed");
+	//Debug.Log("Landed");
 	if(jumpLandAudio.isPlaying==false){
     	jumpLandAudio.Play();
     }
