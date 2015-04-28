@@ -19,7 +19,7 @@ private var roosterScript : GameObject;
 
 function Start () {
 	audioC = GetComponent(PlayerAudioController);
-	roosterScript = GameObject.Find("RoosterSpace");
+	roosterScript = GameObject.FindGameObjectWithTag("Rooster");
 	audioBarLength = 0;
 	maxAudio = 200;
 	curAudio = audioC.GetCurrentSample();

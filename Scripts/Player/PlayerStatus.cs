@@ -22,6 +22,7 @@ public class PlayerStatus : MonoBehaviour {
 	}
 
 	void RevertToCheckpoint() {
+		Debug.Log ("Reverting To Checkpoint");
 		int checkpoint = playerObject.GetCheckpoint();
 		Vector3 newPosition = this.transform.position;
 		if (checkpoint >= 6) {

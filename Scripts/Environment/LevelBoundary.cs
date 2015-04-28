@@ -9,7 +9,8 @@ public class LevelBoundary : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		playerObject = GameObject.FindGameObjectWithTag("Player");
-		roosterObject = GameObject.Find("RoosterSpace");
+		roosterObject = GameObject.FindGameObjectWithTag("Rooster");
+		Debug.Log ("Rooster: "+roosterObject);
 	}
 	
 	// Update is called once per frame
