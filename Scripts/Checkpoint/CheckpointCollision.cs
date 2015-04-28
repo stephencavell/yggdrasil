@@ -10,7 +10,7 @@ public class CheckpointCollision : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void OnTriggerEnter(Collider other)
+	void OnTriggerEnter2D(Collider2D other)
 	{
 		if(other.gameObject.tag == "Player")
 		{

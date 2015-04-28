@@ -1,4 +1,5 @@
 
+// Require a character controller to be attached to the same game object
 @script RequireComponent(CharacterController)
 
 public var idleAnimation : AnimationClip;
@@ -89,20 +90,20 @@ private var lastGroundedTime = 0.0;
 
 private var isControllable = true;
 
-private var audioC : PlayerAudioController;
-
 function Awake ()
 {
-	
-	maincamera = GameObject.FindGameObjectWithTag("Player");
-	audioC = maincamera.GetComponent(PlayerAudioController);
 	moveDirection = transform.TransformDirection(Vector3.forward);
 	
 	_animation = GetComponent(Animation);
 	if(!_animation)
 		Debug.Log("The character you would like to control doesn't have animations. Moving her might look weird.");
-		
 	
+	/*
+public var idleAnimation : AnimationClip;
+public var walkAnimation : AnimationClip;
+public var runAnimation : AnimationClip;
+public var jumpPoseAnimation : AnimationClip;	
+	*/
 	if(!idleAnimation) {
 		_animation = null;
 		Debug.Log("No idle animation found. Turning off animations.");
@@ -150,18 +151,11 @@ function UpdateSmoothedMovementDirection ()
 	isMoving = Mathf.Abs (h) > 0.1 || Mathf.Abs (v) > 0.1;
 		
 	// Target direction relative to the camera
-	var targetDirection = h * right + 0 * forward;
-	//Debug.Log("target direction: "+targetDirection+" h:"+h+" v:"+v+" right: "+right+" forward: "+forward);
+	var targetDirection = h * right + v * forward;
 	
 	// Grounded controls
 	if (grounded)
 	{
-		//Debug.Log("V: "+v);
-		if (v>0){
-			verticalSpeed = CalculateJumpVerticalSpeed (jumpHeight);
-			SendMessage("DidJump", SendMessageOptions.DontRequireReceiver);
-			audioC.PlayJumpStart();
-		}
 		// Lock camera for short period when transitioning moving & standing still
 		lockCameraTimer += Time.deltaTime;
 		if (isMoving != wasMoving)
@@ -198,21 +192,16 @@ function UpdateSmoothedMovementDirection ()
 		// Pick speed modifier
 		if (Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift))
 		{
-			audioC.PlayRunning();
 			targetSpeed *= runSpeed;
 			_characterState = CharacterState.Running;
 		}
 		else if (Time.time - trotAfterSeconds > walkTimeStart)
 		{
-			audioC.PlayTrotting();
 			targetSpeed *= trotSpeed;
 			_characterState = CharacterState.Trotting;
 		}
 		else
 		{
-			if(h!=0){
-				audioC.PlayWalking();
-			}
 			targetSpeed *= walkSpeed;
 			_characterState = CharacterState.Walking;
 		}
@@ -251,7 +240,6 @@ function ApplyJumping ()
 		// - With a timeout so you can press the button slightly before landing		
 		if (canJump && Time.time < lastJumpButtonTime + jumpTimeout) {
 			verticalSpeed = CalculateJumpVerticalSpeed (jumpHeight);
-			audioC.PlayJumpStart();
 			SendMessage("DidJump", SendMessageOptions.DontRequireReceiver);
 		}
 	}
@@ -273,14 +261,10 @@ function ApplyGravity ()
 			SendMessage("DidJumpReachApex", SendMessageOptions.DontRequireReceiver);
 		}
 	
-		if ((IsGrounded ()) && !(Input.GetAxisRaw("Vertical")>0))
-		{
+		if (IsGrounded ())
 			verticalSpeed = 0.0;
-		}
 		else
-		{
 			verticalSpeed -= gravity * Time.deltaTime;
-		}
 	}
 }
 
@@ -333,21 +317,15 @@ function Update() {
 	var controller : CharacterController = GetComponent(CharacterController);
 	collisionFlags = controller.Move(movement);
 	
-	Debug.Log("Animation: "+_animation+".  State: "+_characterState);
-	
 	// ANIMATION sector
 	if(_animation) {
-		Debug.Log("In Here 1.  Character State: ");
 		if(_characterState == CharacterState.Jumping) 
 		{
-			Debug.Log("In Here 2");
 			if(!jumpingReachedApex) {
-				Debug.Log("In Here 3");
 				_animation[jumpPoseAnimation.name].speed = jumpAnimationSpeed;
 				_animation[jumpPoseAnimation.name].wrapMode = WrapMode.ClampForever;
 				_animation.CrossFade(jumpPoseAnimation.name);
 			} else {
-				Debug.Log("In Here 4");
 				_animation[jumpPoseAnimation.name].speed = -landAnimationSpeed;
 				_animation[jumpPoseAnimation.name].wrapMode = WrapMode.ClampForever;
 				_animation.CrossFade(jumpPoseAnimation.name);				
@@ -355,14 +333,11 @@ function Update() {
 		} 
 		else 
 		{
-			Debug.Log("In Here 3.  Velocity: "+controller.velocity.sqrMagnitude);
 			if(controller.velocity.sqrMagnitude < 0.1) {
-				Debug.Log("In Here 4");
 				_animation.CrossFade(idleAnimation.name);
 			}
 			else 
 			{
-				Debug.Log("In Here 5");
 				if(_characterState == CharacterState.Running) {
 					_animation[runAnimation.name].speed = Mathf.Clamp(controller.velocity.magnitude, 0.0, runMaxAnimationSpeed);
 					_animation.CrossFade(runAnimation.name);	
@@ -382,11 +357,10 @@ function Update() {
 	// ANIMATION sector
 	
 	// Set rotation to the move direction
-	
 	if (IsGrounded())
 	{
 		
-		//transform.rotation = Quaternion.LookRotation(moveDirection);
+		transform.rotation = Quaternion.LookRotation(moveDirection);
 			
 	}	
 	else
@@ -395,10 +369,9 @@ function Update() {
 		xzMove.y = 0;
 		if (xzMove.sqrMagnitude > 0.001)
 		{
-			//transform.rotation = Quaternion.LookRotation(xzMove);
+			transform.rotation = Quaternion.LookRotation(xzMove);
 		}
 	}	
-	
 	
 	// We are in jump mode but just became grounded
 	if (IsGrounded())
@@ -407,7 +380,6 @@ function Update() {
 		inAirVelocity = Vector3.zero;
 		if (jumping)
 		{
-			audioC.PlayJumpLand();
 			jumping = false;
 			SendMessage("DidLand", SendMessageOptions.DontRequireReceiver);
 		}
@@ -434,7 +406,6 @@ function IsGrounded () {
 }
 
 function GetDirection () {
-	Debug.Log(moveDirection);
 	return moveDirection;
 }
 
@@ -466,3 +437,4 @@ function Reset ()
 {
 	gameObject.tag = "Player";
 }
+
