@@ -58,14 +58,14 @@ function TheMainMenu () {
 		MainScript.isPause = !MainScript.isPause;
 		MainScript.ResetGame();
 		Time.timeScale = 1;
-		Application.LoadLevel("title-screen");
+		Application.LoadLevel("MainMenu");
 	}
 	GUILayout.Space(spacing);
 	if (GUILayout.Button("<color=white>Restart</color>", buttonStyle)) {
 		MainScript.isPause = !MainScript.isPause;
 		MainScript.ResetGame();
 		Time.timeScale = 1;
-		Application.LoadLevel('Scene2');
+		Application.LoadLevel('Scene 1 - Jack Test 4');
 	}
 	GUILayout.Space(spacing);
 	if (GUILayout.Button("<color=white>Quit</color>", buttonStyle)) {

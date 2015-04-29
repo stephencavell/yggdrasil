@@ -46,15 +46,18 @@ public class CutSceneManager : MonoBehaviour {
 		//Add Scenes
 		playerObject = GameObject.FindGameObjectWithTag("Player");
 		roosterObject = GameObject.FindGameObjectWithTag("Rooster");
-		cutScenes.Add(new CutSceneObject(playerObject.transform, "Player: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu enim blandit, elementum turpis vitae, convallis quam. Sed ut feugiat libero, nec facilisis mi. "));
-		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Rooster: Nullam vel quam neque. Duis varius efficitur ante, pulvinar tristique lacus hendrerit vel. Fusce tristique tellus vitae neque tempus fermentum. "));
-		cutScenes.Add(new CutSceneObject(playerObject.transform, "Player: Pellentesque eget nibh imperdiet, fermentum elit eu, tempus libero. Fusce tempus aliquet pulvinar. Aenean vel turpis turpis"));
-		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Rooster: Fusce pulvinar elementum sapien eget auctor. Donec dapibus sem sed sollicitudin rhoncus."));
-		cutScenes.Add(new CutSceneObject(playerObject.transform, "Player:Curabitur porta erat a enim vehicula, eget posuere sem consequat. Nam velit enim, fermentum in libero eu, tristique mattis arcu."));
-		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Rooster: Vestibulum finibus rhoncus sapien, quis gravida quam porta non. Nulla facilisi. Proin arcu neque, elementum aliquam lacus commodo."));
-		cutScenes.Add(new CutSceneObject(playerObject.transform, "Player: Nulla ullamcorper tincidunt imperdiet. Aliquam erat volutpat. Aliquam leo lectus, pulvinar ac magna et, mattis sodales felis."));
-		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Rooster: Nam lobortis mattis volutpat. Praesent pulvinar fermentum ante. Nulla felis nulla, molestie nec turpis convallis, iaculis fringilla lacus."));
-		cutScenes.Add(new CutSceneObject(playerObject.transform, "Player: Nam lobortis mattis volutpat. Praesent pulvinar fermentum ante. Nulla felis nulla, molestie nec turpis convallis, iaculis fringilla lacus."));
+		cutScenes.Add(new CutSceneObject(playerObject.transform, "In a series of events leading up to Ragnarok, Loki has just killed Baldur, signifying the imminent start of war and chaos in the 9 realms that span across Yggdrasil. "));
+		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Loki has previously kidnapped Lifthrasir in an effort to prevent the repopulation of the world after Ragnarok. Lif has been attempting to track Loki and his efforts have landed him in Muspelheim, a land inhibited by the fire giants and demons.  "));
+		cutScenes.Add(new CutSceneObject(playerObject.transform, "Raven: Lif, you are now in Muspelheim. As you can see, this world is the land of fire and lava. Many giants and demons live here. The ruler of this world, Surt, lives at the top of that volcano. Surt is known to be a very violent leader, a merciless slayer wielding a flaming sword. You must be careful."));
+		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Player: Look, there’s Loki with Lifthrasir! I have to stop him and save her!"));
+		cutScenes.Add(new CutSceneObject(playerObject.transform, "Player: What is Loki doing now??"));
+		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Raven: Oh, no. He is waking up the rooster. Quick we have to stop that rooster!"));
+		cutScenes.Add(new CutSceneObject(playerObject.transform, "Player: What does the rooster have to do with anything? I need to save Lifthrasir!"));
+		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Raven: Wait, Lif. You must listen to me. We HAVE to stop that rooster. Surt is asleep right now. Loki has just convinced the rooster to wake him up and warn him that Ragnarok has begun. If that rooster gets to Surt and wakes him up, there is impending doom for all of us. He will use his sword to burn your home down!"));
+		cutScenes.Add(new CutSceneObject(playerObject.transform, "Player: Well, what are we waiting for? Let’s stop that rooster!"));
+		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Raven: Okay. Be careful not to let it make too much noise. The bar at the top left shows the noise meter. If that meter reaches the top and stays there, then it’s all over."));
+		cutScenes.Add(new CutSceneObject(roosterObject.transform, ""));
+
 
 		firstDialogue = true;
 		_playerController = playerObject.GetComponent<LifController>();
