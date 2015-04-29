@@ -7,6 +7,9 @@ public class CloseToRooster : MonoBehaviour {
 	private CheckpointManager checkpointManager;
 	private LifController _playerController;
 	private SmoothFollow _mainCamera;
+
+	private GameObject rooster;
+	public Animator rooanim;
 	
 	private int position;
 	public int newPositionX1;
@@ -29,6 +32,7 @@ public class CloseToRooster : MonoBehaviour {
 	Transform mySphere;
 	bool flying;
 	bool roosterSound;
+	
 
 	// Use this for initialization
 	void Start () {
@@ -45,6 +49,8 @@ public class CloseToRooster : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//rooster = GameObject.FindGameObjectWithTag ("Rooster");
+		rooanim.SetBool ("flying", flying);
 		if(this.transform!=null){
 			PlayRoosterCrow();
 			if(flying == true){
