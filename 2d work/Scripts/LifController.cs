@@ -8,7 +8,9 @@ public class LifController : MonoBehaviour {
 
 	Animator anim;
 
-	bool grounded = false;
+	private CutSceneManager cut;
+
+	public bool grounded = false;
 	public Transform groundCheck;
 	float groundRadius = 0.2f;
 	public LayerMask whatIsGround;
@@ -20,7 +22,8 @@ public class LifController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
-		isControllable = true;
+		isControllable = false;
+		cut = GetComponent<CutSceneManager>();
 	}
 	
 	// Update is called once per frame
