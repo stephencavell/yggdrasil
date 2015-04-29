@@ -11,7 +11,7 @@ public var spacing : int = 20;
 private var MainMenu : Rect;
 private var windowStyle : GUIStyle;
 private var buttonStyle : GUIStyle;
-//private var mouseLook : MouseLook;
+private var playerObject : GameObject;
 
 function Start () {
 	Screen.showCursor = !Screen.showCursor;
@@ -33,9 +33,8 @@ function Start () {
 	buttonStyle.font = guiFont;
 	buttonStyle.fontSize = 20;
 
-	//mouseLook = GameObject.FindWithTag("Player").GetComponent(MouseLook);
-
 	MainMenu = Rect(Screen.width/2 - width/2, Screen.height/2 - height/2, width, height);
+	playerObject = GameObject.FindGameObjectWithTag("Player");
 }
 
 function Update () {
@@ -43,7 +42,7 @@ function Update () {
 	{
 		MainScript.isPause = !MainScript.isPause;
 		Screen.showCursor = !Screen.showCursor;
-		//mouseLook.enabled = !mouseLook.enabled;
+		playerObject.SendMessage("pauseMenu",MainScript.isPause);
 		if (MainScript.isPause) Time.timeScale = 0;
 		else Time.timeScale = 1;
 	}
@@ -73,4 +72,8 @@ function TheMainMenu () {
 		Time.timeScale = 1;
 		Application.Quit();
 	}
+}
+
+public function IsPaused(){
+	return MainScript.isPause;
 }

@@ -22,7 +22,7 @@ public class CutSceneManager : MonoBehaviour {
 	private GUIStyle windowStyle;
 	private GUIStyle buttonStyle;
 	private bool firstDialogue;
-	private bool start;
+	private bool inPauseMenu;
 	
 	void  Start (){
 		windowStyle = new GUIStyle();
@@ -56,47 +56,51 @@ public class CutSceneManager : MonoBehaviour {
 		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Raven: Wait, Lif. You must listen to me. We HAVE to stop that rooster. Surt is asleep right now. Loki has just convinced the rooster to wake him up and warn him that Ragnarok has begun. If that rooster gets to Surt and wakes him up, there is impending doom for all of us. He will use his sword to burn your home down!"));
 		cutScenes.Add(new CutSceneObject(playerObject.transform, "Player: Well, what are we waiting for? Let’s stop that rooster!"));
 		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Raven: Okay. Be careful not to let it make too much noise. The bar at the top left shows the noise meter. If that meter reaches the top and stays there, then it’s all over."));
-		cutScenes.Add(new CutSceneObject(roosterObject.transform, ""));
+		cutScenes.Add(new CutSceneObject(playerObject.transform, ""));
 
 
 		firstDialogue = true;
+		inPauseMenu = false;
 		_playerController = playerObject.GetComponent<LifController>();
 	}
 	
 	void  Update (){
-		if(firstDialogue == true){
-			Screen.showCursor = !Screen.showCursor;
-			if(currentScene<cutScenes.Count){
-				firstDialogue = false;
-				cutScenes[currentScene].startAll();
-				currentScene++;
-			}
-		} else if (Input.anyKeyDown&&!Input.GetKeyDown(KeyCode.Escape)&&!(Input.GetMouseButtonDown(0)||Input.GetMouseButtonDown(1)||Input.GetMouseButtonDown(2)))
-		{
-			Debug.Log ("Current Scene: "+currentScene+". Count: "+cutScenes.Count+". Controllable: "+_playerController.getControllable()+". Paused: "+MainScriptManager.isPause);
-			if(currentScene<cutScenes.Count){
-				if(MainScriptManager.isPause){
-					MainScriptManager.isPause = !MainScriptManager.isPause;
-					if (MainScriptManager.isPause) Time.timeScale = 0;
-					else Time.timeScale = 1;
-				} else {
-					Debug.Log ("Not Paused");
-					//MainScriptManager.isPause = !MainScriptManager.isPause;
-					Debug.Log("Paused Next Speaker Will Start");
+		if(inPauseMenu==false){
+			if(firstDialogue == true){
+				Screen.showCursor = !Screen.showCursor;
+				if(currentScene<cutScenes.Count){
+					firstDialogue = false;
 					cutScenes[currentScene].startAll();
-					if(currentScene==cutScenes.Count-1){
-						_playerController.setControllable(true);
-					}
 					currentScene++;
+				}
+			} else if (Input.anyKeyDown&&!Input.GetKeyDown(KeyCode.Escape)&&!(Input.GetMouseButtonDown(0)||Input.GetMouseButtonDown(1)||Input.GetMouseButtonDown(2)))
+			{
+				if(currentScene<cutScenes.Count){
+					if(MainScriptManager.isPause){
+						MainScriptManager.isPause = !MainScriptManager.isPause;
+						if (MainScriptManager.isPause) Time.timeScale = 0;
+						else Time.timeScale = 1;
+					} else {
+						Debug.Log ("Not Paused");
+						//MainScriptManager.isPause = !MainScriptManager.isPause;
+						Debug.Log("Paused Next Speaker Will Start");
+						cutScenes[currentScene].startAll();
+						if(currentScene==cutScenes.Count-1){
+							_playerController.setControllable(true);
+						}
+						currentScene++;
+					}
 				}
 			}
 		}
 	}
 	
 	void  OnGUI (){
-		if (currentScene < cutScenes.Count) {
-			GUI.TextArea (new Rect (50, Screen.height - 150, Screen.width - 100, 100), cutScenes [currentScene - 1].getDialogue (), Screen.width - 100);
-			GUI.Label (new Rect (50, Screen.height - 150, Screen.width - 100, 100), GUIContent.none, windowStyle);
+		if(inPauseMenu==false){
+			if (currentScene < cutScenes.Count) {
+				GUI.TextArea (new Rect (50, Screen.height - 150, Screen.width - 100, 100), cutScenes [currentScene - 1].getDialogue (), Screen.width - 100);
+				GUI.Label (new Rect (50, Screen.height - 150, Screen.width - 100, 100), GUIContent.none, windowStyle);
+			}
 		}
 	}
 
@@ -121,74 +125,8 @@ public class CutSceneManager : MonoBehaviour {
 			return dialogue;
 		}
 	}
+	
+	public void pauseMenu(bool val){
+		inPauseMenu = val;
+	}
 }
-
-/*using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-
-public class CutSceneManager : MonoBehaviour {
-
-
-	private List<CutSceneObject> cutScenes = new List<CutSceneObject>();
-	private GameObject playerObject;
-	private GameObject roosterObject;
-	private int currentScene = 0;
-
-	private bool firstRunning;
-
-	void Start () {
-		firstRunning = false;
-	}
-
-	void Update () {
-		if(firstRunning==true){
-			playerObject = GameObject.FindGameObjectWithTag("Player");
-			roosterObject = GameObject.FindGameObjectWithTag("Rooster");
-			cutScenes.Add(new CutSceneObject(playerObject.transform, "test"));
-			cutScenes.Add(new CutSceneObject(roosterObject.transform, "test"));
-			foreach(CutSceneObject cut in cutScenes){//(int i=0;i<cutScenes.Count;i++){
-				Debug.Log ("AND NOW IN HERE");
-				cut.startAll();
-			}
-		}
-	}
-
-	public void FirstCut(){
-		firstRunning = true;
-	}
-
-	public class CutSceneObject {
-		private GameObject playerObject;
-		private SmoothFollow _mainCamera;
-
-		public Transform character;
-		public string dialogue;
-		public bool IsEnded;
-		public CutSceneObject(Transform c, string d){
-			playerObject = GameObject.FindGameObjectWithTag("Player");
-			_mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SmoothFollow>();
-			character = c;
-			dialogue = d;
-			IsEnded= false;
-		}
-		public void startAll(){
-			goToTransform();
-			createDialogueBox();
-		}
-		void goToTransform(){
-			Debug.Log ("Character: "+character);
-			_mainCamera.target = character;
-		}
-		void createDialogueBox(){
-
-		}
-		bool isInputPressed(){
-			if (Input.anyKey) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-	}
-}*/
