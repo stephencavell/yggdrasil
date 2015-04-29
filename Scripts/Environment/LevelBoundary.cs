@@ -10,7 +10,6 @@ public class LevelBoundary : MonoBehaviour {
 	void Start () {
 		playerObject = GameObject.FindGameObjectWithTag("Player");
 		roosterObject = GameObject.FindGameObjectWithTag("Rooster");
-		Debug.Log ("Rooster: "+roosterObject);
 	}
 	
 	// Update is called once per frame
