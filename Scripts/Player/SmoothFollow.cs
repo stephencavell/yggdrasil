@@ -19,6 +19,7 @@ public class SmoothFollow : MonoBehaviour
 	
 	void Awake()
 	{
+		Screen.showCursor = !Screen.showCursor;
 		transform = gameObject.transform;
 		_playerController = target.GetComponent<Rigidbody2D>();
 	}
