@@ -1,0 +1,487 @@
+fileFormatVersion: 2
+guid: 1865523a3e6abfd4ea4812607f5a8348
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: PSRC_StarterPack5_Optimized_Color_0
+    21300002: PSRC_StarterPack5_Optimized_Color_1
+    21300004: PSRC_StarterPack5_Optimized_Color_2
+    21300006: PSRC_StarterPack5_Optimized_Color_3
+    21300008: PSRC_StarterPack5_Optimized_Color_4
+    21300010: PSRC_StarterPack5_Optimized_Color_5
+    21300012: PSRC_StarterPack5_Optimized_Color_6
+    21300014: PSRC_StarterPack5_Optimized_Color_7
+    21300016: PSRC_StarterPack5_Optimized_Color_8
+    21300018: PSRC_StarterPack5_Optimized_Color_9
+    21300020: PSRC_StarterPack5_Optimized_Color_10
+    21300022: PSRC_StarterPack5_Optimized_Color_11
+    21300024: PSRC_StarterPack5_Optimized_Color_12
+    21300026: PSRC_StarterPack5_Optimized_Color_13
+    21300028: PSRC_StarterPack5_Optimized_Color_14
+    21300030: PSRC_StarterPack5_Optimized_Color_15
+    21300032: PSRC_StarterPack5_Optimized_Color_16
+    21300034: PSRC_StarterPack5_Optimized_Color_17
+    21300036: PSRC_StarterPack5_Optimized_Color_18
+    21300038: PSRC_StarterPack5_Optimized_Color_19
+    21300040: PSRC_StarterPack5_Optimized_Color_20
+    21300042: PSRC_StarterPack5_Optimized_Color_21
+    21300044: PSRC_StarterPack5_Optimized_Color_22
+    21300046: PSRC_StarterPack5_Optimized_Color_23
+    21300048: PSRC_StarterPack5_Optimized_Color_24
+    21300050: PSRC_StarterPack5_Optimized_Color_25
+    21300052: PSRC_StarterPack5_Optimized_Color_26
+    21300054: PSRC_StarterPack5_Optimized_Color_27
+    21300056: PSRC_StarterPack5_Optimized_Color_28
+    21300058: PSRC_StarterPack5_Optimized_Color_29
+    21300060: PSRC_StarterPack5_Optimized_Color_30
+    21300062: PSRC_StarterPack5_Optimized_Color_31
+    21300064: PSRC_StarterPack5_Optimized_Color_32
+    21300066: PSRC_StarterPack5_Optimized_Color_33
+    21300068: PSRC_StarterPack5_Optimized_Color_34
+    21300070: PSRC_StarterPack5_Optimized_Color_35
+    21300072: PSRC_StarterPack5_Optimized_Color_36
+    21300074: PSRC_StarterPack5_Optimized_Color_37
+    21300076: PSRC_StarterPack5_Optimized_Color_38
+    21300078: PSRC_StarterPack5_Optimized_Color_39
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -2
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 40
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: PSRC_StarterPack5_Optimized_Color_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 220
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 220
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_2
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 220
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_3
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 220
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_4
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 220
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_5
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 220
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_6
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 220
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_7
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 184
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_8
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 184
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_9
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 184
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_10
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 184
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_11
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 184
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_12
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 184
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_13
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 184
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_14
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 148
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_15
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 148
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_16
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 148
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_17
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 148
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_18
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 148
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_19
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 148
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_20
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 148
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_21
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 112
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_22
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 112
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_23
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 112
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_24
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 112
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_25
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 112
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_26
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 112
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_27
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 112
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_28
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 76
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_29
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 76
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_30
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 76
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_31
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 76
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_32
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 76
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_33
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 76
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_34
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 76
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_35
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 40
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_36
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 40
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_37
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 40
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_38
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 40
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PSRC_StarterPack5_Optimized_Color_39
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 40
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
