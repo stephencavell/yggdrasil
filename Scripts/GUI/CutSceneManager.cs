@@ -56,7 +56,7 @@ public class CutSceneManager : MonoBehaviour {
 		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Raven: Wait, Lif. You must listen to me. We HAVE to stop that rooster. Surt is asleep right now. Loki has just convinced the rooster to wake him up and warn him that Ragnarok has begun. If that rooster gets to Surt and wakes him up, there is impending doom for all of us. He will use his sword to burn your home down!"));
 		cutScenes.Add(new CutSceneObject(playerObject.transform, "Player: Well, what are we waiting for? Let’s stop that rooster!"));
 		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Raven: Okay. Be careful not to let it make too much noise. The bar at the top left shows the noise meter. If that meter reaches the top and stays there, then it’s all over."));
-		cutScenes.Add(new CutSceneObject(roosterObject.transform, ""));
+		cutScenes.Add(new CutSceneObject(playerObject.transform, ""));
 
 
 		firstDialogue = true;
