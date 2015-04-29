@@ -2,12 +2,12 @@
 using System.Collections;
 
 public class CloseToRooster : MonoBehaviour {
-
+	
 	private GameObject playerObject;
 	private CheckpointManager checkpointManager;
 	private LifController _playerController;
 	private SmoothFollow _mainCamera;
-
+	
 	private GameObject rooster;
 	public Animator rooanim;
 	
@@ -33,7 +33,7 @@ public class CloseToRooster : MonoBehaviour {
 	bool flying;
 	bool roosterSound;
 	
-
+	
 	// Use this for initialization
 	void Start () {
 		position = 0;
@@ -64,7 +64,7 @@ public class CloseToRooster : MonoBehaviour {
 			}
 		}
 	}
-
+	
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if(other.gameObject.tag == "Player")
@@ -83,6 +83,9 @@ public class CloseToRooster : MonoBehaviour {
 					position++;
 					_mainCamera.target = this.transform;
 					_playerController.setControllable(false);
+					//Destroy(this.collider2D);
+					BoxCollider2D box = GetComponent<BoxCollider2D>();
+					box.size=new Vector2(0.5f,0.5f);
 				} else if(position==1){
 					Debug.Log("IN HERE");
 					playerObject.SendMessage("PauseRoosterCrow");
@@ -92,11 +95,11 @@ public class CloseToRooster : MonoBehaviour {
 			}
 		}
 	}
-
+	
 	void PlayRoosterCrow(){
 		playerObject.SendMessage("PlayRoosterCrow");
 	}
-
+	
 	void RevertToCheckpoint() {
 		int checkpoint = checkpointManager.GetCheckpoint();
 		Vector3 newPosition = this.transform.position;
@@ -115,7 +118,7 @@ public class CloseToRooster : MonoBehaviour {
 		}
 		this.transform.position = newPosition;
 	}
-
+	
 	void BezierCurve(){
 		BezierTime = BezierTime + Time.deltaTime/6;
 		if (BezierTime >= 1) {
@@ -125,7 +128,6 @@ public class CloseToRooster : MonoBehaviour {
 		CurveX = (((1-BezierTime)*(1-BezierTime)) * StartPointX) + (2 * BezierTime * (1 - BezierTime) * ControlPointX) + ((BezierTime * BezierTime) * EndPointX);
 		CurveY = (((1-BezierTime)*(1-BezierTime)) * StartPointY) + (2 * BezierTime * (1 - BezierTime) * ControlPointY) + ((BezierTime * BezierTime) * EndPointY);
 		this.transform.position = new Vector3(CurveX, CurveY, 0);
-		Debug.Log ("Curve X: "+CurveX+". Curve Y: "+CurveY+". Flying: "+flying+".  StartPointX: "+StartPointX+".  StartPointY: "+StartPointY+". Control Point X: "+ControlPointX+". Control Point Y: "+ControlPointY+". EndPointX: "+EndPointX+". EndPointY: "+EndPointY);
 		if(this.transform.position.x >= newPositionX1-1){
 			Debug.Log ("Done");
 			flying = false;
