@@ -64,7 +64,7 @@ function TheMainMenu () {
 		MainScript.isPause = !MainScript.isPause;
 		MainScript.ResetGame();
 		Time.timeScale = 1;
-		Application.LoadLevel('Scene 1 - Jack Test 4');
+		Application.LoadLevel('stephenLevel');
 	}
 	GUILayout.Space(spacing);
 	if (GUILayout.Button("<color=white>Quit</color>", buttonStyle)) {
