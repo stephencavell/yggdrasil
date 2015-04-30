@@ -135,7 +135,7 @@ public class CutSceneManager : MonoBehaviour {
 			if (currentScene < cutScenes.Count) {
 				//GUI.TextArea (new Rect (50, Screen.height - 150, Screen.width - 100, 100), cutScenes [currentScene - 1].getDialogue (), Screen.width - 100);
 				GUI.Label(new Rect (55, Screen.height - 145, Screen.width - 110, 90), "<size=18>"+cutScenes [currentScene - 1].getDialogue()+"</size>");
-				GUI.Label(new Rect (Screen.width-(0.25f*Screen.width), Screen.height - 75, 0.25f*Screen.width-5, 90), "<size=18>Press Any Button to Continue</size>");
+				GUI.Label(new Rect (Screen.width-(0.35f*Screen.width), Screen.height - 75, 0.35f*Screen.width-5, 90), "<size=18>Press Any Button to Continue</size>");
 				GUI.Label (new Rect (50, Screen.height - 150, Screen.width - 100, 100), GUIContent.none, windowStyle);
 			}
 		}
