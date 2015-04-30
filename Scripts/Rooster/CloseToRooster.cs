@@ -169,6 +169,8 @@ public class CloseToRooster : MonoBehaviour {
 					lifAnim.SetBool("roocatch", true);
 					_playerController.setControllable(false);
 					this.transform.position = new Vector2(playerObject.transform.position.x, playerObject.transform.position.y + 1);
+					playerObject.SendMessage("monitorAudio", false);
+
 				}
 			}
 		}
