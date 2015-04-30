@@ -12,6 +12,7 @@ private var MainMenu : Rect;
 private var windowStyle : GUIStyle;
 private var buttonStyle : GUIStyle;
 private var playerObject : GameObject;
+private var characterFemale : boolean;
 
 function Start () {
 	Screen.showCursor = !Screen.showCursor;
@@ -35,6 +36,12 @@ function Start () {
 
 	MainMenu = Rect(Screen.width/2 - width/2, Screen.height/2 - height/2, width, height);
 	playerObject = GameObject.FindGameObjectWithTag("Player");
+	if(GameObject.Find("Lif")==playerObject){
+		characterFemale = false;
+	} else if(GameObject.Find("Lifthrasir")==playerObject){
+		characterFemale = true;
+	}
+	Debug.Log("Female: "+characterFemale);
 }
 
 function Update () {
@@ -56,24 +63,46 @@ function OnGUI () {
 }
 
 function TheMainMenu () {
-	if (GUILayout.Button("<color=white>Main Menu</color>", buttonStyle)) {
-		MainScript.isPause = !MainScript.isPause;
-		MainScript.ResetGame();
-		Time.timeScale = 1;
-		Application.LoadLevel("MainMenu");
-	}
-	GUILayout.Space(spacing);
-	if (GUILayout.Button("<color=white>Restart</color>", buttonStyle)) {
-		MainScript.isPause = !MainScript.isPause;
-		MainScript.ResetGame();
-		Time.timeScale = 1;
-		Application.LoadLevel('stephenLevel');
-	}
-	GUILayout.Space(spacing);
-	if (GUILayout.Button("<color=white>Quit</color>", buttonStyle)) {
-		MainScript.isPause = !MainScript.isPause;
-		Time.timeScale = 1;
-		Application.Quit();
+	if(characterFemale){
+		if (GUILayout.Button("<color=white>Main Menu</color>", buttonStyle)) {
+			MainScript.isPause = !MainScript.isPause;
+			MainScript.ResetGame();
+			Time.timeScale = 1;
+			Application.LoadLevel("MainMenu");
+		}
+		GUILayout.Space(spacing);
+		if (GUILayout.Button("<color=white>Restart</color>", buttonStyle)) {
+			MainScript.isPause = !MainScript.isPause;
+			MainScript.ResetGame();
+			Time.timeScale = 1;
+			Application.LoadLevel('girlscene');
+		}
+		GUILayout.Space(spacing);
+		if (GUILayout.Button("<color=white>Quit</color>", buttonStyle)) {
+			MainScript.isPause = !MainScript.isPause;
+			Time.timeScale = 1;
+			Application.Quit();
+		}
+	} else {
+		if (GUILayout.Button("<color=white>Main Menu</color>", buttonStyle)) {
+			MainScript.isPause = !MainScript.isPause;
+			MainScript.ResetGame();
+			Time.timeScale = 1;
+			Application.LoadLevel("MainMenu");
+		}
+		GUILayout.Space(spacing);
+		if (GUILayout.Button("<color=white>Restart</color>", buttonStyle)) {
+			MainScript.isPause = !MainScript.isPause;
+			MainScript.ResetGame();
+			Time.timeScale = 1;
+			Application.LoadLevel('stephenLevel');
+		}
+		GUILayout.Space(spacing);
+		if (GUILayout.Button("<color=white>Quit</color>", buttonStyle)) {
+			MainScript.isPause = !MainScript.isPause;
+			Time.timeScale = 1;
+			Application.Quit();
+		}
 	}
 }
 
