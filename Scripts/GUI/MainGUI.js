@@ -20,6 +20,12 @@ private var checkAudio : boolean;
 
 private var deathTime : float;
 
+private var anim : Animator;
+
+private var death : boolean;
+
+
+
 function Start () {
 	audioC = GameObject.FindGameObjectWithTag("MainCamera").GetComponent(PlayerAudioController);
 	roosterScript = GameObject.FindGameObjectWithTag("Rooster");
@@ -42,6 +48,7 @@ function Start () {
 	textStyle.font = guiFont;
 	checkAudio=false;
 	deathTime = 0;
+	death = false;
 }
 
 function Update () {
@@ -80,13 +87,18 @@ function audioBarLengthUpdate(){
 		roosterQuickness-=1;
 	}
 	if(roosterQuickness<=0){
+		Debug.Log("In here. Death Time: "+deathTime);
 		if(deathTime >= 1){
 			this.SendMessage("RevertToCheckpoint");
 			roosterScript.SendMessage("RevertToCheckpoint");
 			ResetRoosterTime();
 			deathTime = 0;
+		} else if(deathTime==0){
+			anim = this.GetComponent(Animator);
+			anim.SetBool("death",true);
+			deathTime = Time.deltaTime+deathTime;
 		} else {
-			deathTime = Time.deltaTime*6;
+			deathTime = Time.deltaTime+deathTime;
 		}
 	}
 }
