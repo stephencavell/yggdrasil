@@ -80,10 +80,13 @@ function audioBarLengthUpdate(){
 		roosterQuickness-=1;
 	}
 	if(roosterQuickness<=0){
-		if(){
+		if(deathTime >= 1){
 			this.SendMessage("RevertToCheckpoint");
 			roosterScript.SendMessage("RevertToCheckpoint");
 			ResetRoosterTime();
+			deathTime = 0;
+		} else {
+			deathTime = Time.deltaTime*6;
 		}
 	}
 }
