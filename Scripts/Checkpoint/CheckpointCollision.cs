@@ -16,7 +16,7 @@ public class CheckpointCollision : MonoBehaviour {
 		{
 			Debug.Log("Entered Checkpoint: "+checkpoint);
 			playerObject.SendMessage("SetCheckpoint",checkpoint);
-			Destroy(this);
+			Destroy(this.gameObject);
 		}
 	}
 }

@@ -8,6 +8,7 @@ public class PlayerStatus : MonoBehaviour {
 	public Vector3 checkpoint4;
 	public Vector3 checkpoint5;
 	public Vector3 checkpoint6;
+	public Vector3 checkpoint7;
 
 	private CheckpointManager playerObject;
 
@@ -25,7 +26,9 @@ public class PlayerStatus : MonoBehaviour {
 		Debug.Log ("Reverting To Checkpoint");
 		int checkpoint = playerObject.GetCheckpoint();
 		Vector3 newPosition = this.transform.position;
-		if (checkpoint >= 6) {
+		if (checkpoint >= 7) {
+			newPosition = checkpoint7;
+		} else if (checkpoint == 6) {
 			newPosition = checkpoint6;
 		} else if (checkpoint == 5) {
 			newPosition = checkpoint5;
