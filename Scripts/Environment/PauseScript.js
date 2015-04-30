@@ -38,7 +38,7 @@ function Start () {
 }
 
 function Update () {
-	if (Input.GetKeyDown(KeyCode.Escape) && Application.loadedLevelName != 'title-screen' && Application.loadedLevelName != 'win-screen' && Application.loadedLevelName != 'lose-screen')
+	if (Input.GetKeyDown(KeyCode.Escape) && Application.loadedLevelName != 'MainMenu')
 	{
 		MainScript.isPause = !MainScript.isPause;
 		Screen.showCursor = !Screen.showCursor;
@@ -49,7 +49,10 @@ function Update () {
 }
 
 function OnGUI () {
-	if (MainScript.isPause) GUI.Window(0, MainMenu, TheMainMenu, '', windowStyle);
+	if (MainScript.isPause) {
+		GUI.Window(0, MainMenu, TheMainMenu, '', windowStyle);
+		playerObject.SendMessage("monitorAudio", !MainScript.isPause);
+	};
 }
 
 function TheMainMenu () {
