@@ -29,6 +29,7 @@ public class CloseToRooster : MonoBehaviour {
 	float CurveX;
 	float CurveY;
 	float BezierTime = 0;
+	float crowInterval = 1;
 	Transform mySphere;
 	bool flying;
 	bool roosterSound;
@@ -58,7 +59,11 @@ public class CloseToRooster : MonoBehaviour {
 				StartPointY = this.transform.position.y;
 			}
 			if(roosterSound==true&&!cutScene.inPauseMenu&&!cutScene.inCutScene()){
-				PlayRoosterCrow();
+				if(crowInterval>=1){
+					PlayRoosterCrow();
+					crowInterval = 0;
+				}
+				crowInterval=Time.deltaTime*57;
 			} else {
 				PauseRoosterCrow();
 			}
@@ -70,36 +75,13 @@ public class CloseToRooster : MonoBehaviour {
 		if(other.gameObject.tag == "Player")
 		{
 			if(flying==false){
-				if(position<=6){
-					playerObject.SendMessage("ResetRoosterTime");
-					if(StartPointX<35){
-						StartPointX = checkpoint1.x;
-						StartPointY = checkpoint1.y;
-						EndPointX = checkpoint2.x;
-						EndPointY = checkpoint2.y;
-					} else if(StartPointX<60) {
-						StartPointX = checkpoint2.x;
-						StartPointY = checkpoint2.y;
-						EndPointX = checkpoint3.x;
-						EndPointY = checkpoint3.y;
-					} else if(StartPointX<90) {
-						StartPointX = checkpoint3.x;
-						StartPointY = checkpoint3.y;
-						EndPointX = checkpoint4.x;
-						EndPointY = checkpoint4.y;
-					} else if(StartPointX<110) {
-						StartPointX = checkpoint4.x;
-						StartPointY = checkpoint4.y;
-						EndPointX = checkpoint5.x;
-						EndPointY = checkpoint5.y;
-					} else if(StartPointX<140) {
-						StartPointX = checkpoint5.x;
-						StartPointY = checkpoint5.y;
-						EndPointX = checkpoint6.x;
-						EndPointY = checkpoint6.y;
-					}
+				playerObject.SendMessage("ResetRoosterTime");
+				if(StartPointX<35){
+					StartPointX = checkpoint1.x;
+					StartPointY = checkpoint1.y;
+					EndPointX = checkpoint2.x;
+					EndPointY = checkpoint2.y;
 					ControlPointX = StartPointX+((EndPointX-StartPointX)*3/4);
-					//ControlPointY = StartPointY+((EndPointY-StartPointY));
 					Debug.Log ("Position: "+position+". StartPoint: ("+StartPointX+","+StartPointY+"). Control Point: ("+ControlPointX+","+ControlPointY+"). End Point: ("+EndPointX+","+EndPointY+")");
 					
 					flying = true;
@@ -110,15 +92,77 @@ public class CloseToRooster : MonoBehaviour {
 					_mainCamera.target = this.transform;
 					_playerController.setControllable(false);
 					BezierTime = 0;
-				} else if(position==6){
-					Debug.Log("IN HERE");
+				} else if(StartPointX<60) {
+					StartPointX = checkpoint2.x;
+					StartPointY = checkpoint2.y;
+					EndPointX = checkpoint3.x;
+					EndPointY = checkpoint3.y;
+					ControlPointX = StartPointX+((EndPointX-StartPointX)*3/4);
+					Debug.Log ("Position: "+position+". StartPoint: ("+StartPointX+","+StartPointY+"). Control Point: ("+ControlPointX+","+ControlPointY+"). End Point: ("+EndPointX+","+EndPointY+")");
+					
+					flying = true;
+					PauseRoosterCrow();
+					mainCameraSound.SendMessage("PlayWingsFlapping");
+					roosterSound = false;
+					position++;
+					_mainCamera.target = this.transform;
+					_playerController.setControllable(false);
+					BezierTime = 0;
+				} else if(StartPointX<90) {
+					StartPointX = checkpoint3.x;
+					StartPointY = checkpoint3.y;
+					EndPointX = checkpoint4.x;
+					EndPointY = checkpoint4.y;
+					ControlPointX = StartPointX+((EndPointX-StartPointX)*3/4);
+					Debug.Log ("Position: "+position+". StartPoint: ("+StartPointX+","+StartPointY+"). Control Point: ("+ControlPointX+","+ControlPointY+"). End Point: ("+EndPointX+","+EndPointY+")");
+					
+					flying = true;
+					PauseRoosterCrow();
+					mainCameraSound.SendMessage("PlayWingsFlapping");
+					roosterSound = false;
+					position++;
+					_mainCamera.target = this.transform;
+					_playerController.setControllable(false);
+					BezierTime = 0;
+				} else if(StartPointX<110) {
+					StartPointX = checkpoint4.x;
+					StartPointY = checkpoint4.y;
+					EndPointX = checkpoint5.x;
+					EndPointY = checkpoint5.y;
+					ControlPointX = StartPointX+((EndPointX-StartPointX)*3/4);
+					Debug.Log ("Position: "+position+". StartPoint: ("+StartPointX+","+StartPointY+"). Control Point: ("+ControlPointX+","+ControlPointY+"). End Point: ("+EndPointX+","+EndPointY+")");
+					
+					flying = true;
+					PauseRoosterCrow();
+					mainCameraSound.SendMessage("PlayWingsFlapping");
+					roosterSound = false;
+					position++;
+					_mainCamera.target = this.transform;
+					_playerController.setControllable(false);
+					BezierTime = 0;
+				} else if(StartPointX<140) {
+					StartPointX = checkpoint5.x;
+					StartPointY = checkpoint5.y;
+					EndPointX = checkpoint6.x;
+					EndPointY = checkpoint6.y;
+					ControlPointX = StartPointX+((EndPointX-StartPointX)*3/4);
+					Debug.Log ("Position: "+position+". StartPoint: ("+StartPointX+","+StartPointY+"). Control Point: ("+ControlPointX+","+ControlPointY+"). End Point: ("+EndPointX+","+EndPointY+")");
+					
+					flying = true;
+					PauseRoosterCrow();
+					mainCameraSound.SendMessage("PlayWingsFlapping");
+					roosterSound = false;
+					position++;
+					_mainCamera.target = this.transform;
+					_playerController.setControllable(false);
+					BezierTime = 0;
+					BoxCollider2D box = GetComponent<BoxCollider2D>();
+					box.size=new Vector2(box.size.x,1f);
+				} else {
+					Debug.Log ("End Collision");
 					PauseRoosterCrow();
 					Destroy(this.gameObject);
 					roosterSound = false;
-				}
-				if(position==5){
-					BoxCollider2D box = GetComponent<BoxCollider2D>();
-					box.size=new Vector2(0.5f,0.5f);
 				}
 			}
 		}

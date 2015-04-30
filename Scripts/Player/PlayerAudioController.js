@@ -91,7 +91,7 @@ function Awake() {
     roosterCrowAudio.clip = roosterCrowClip;
     roosterCrowAudio.loop = false;
     roosterCrowAudio.playOnAwake = false;
-    roosterCrowAudio.volume = 0.8;
+    roosterCrowAudio.volume = 0.5;
     roosterCrowAudio.dopplerLevel = 0.0;
     sources.Push(roosterCrowAudio);
     
@@ -180,7 +180,7 @@ function PlayRaven() {
 }
 
 function PlayWalking() {
-	Debug.Log("Walking");
+	//Debug.Log("Walking");
 	if(runningAudio.isPlaying==true){
 		runningAudio.Pause();
 	}
@@ -190,7 +190,7 @@ function PlayWalking() {
 }
 
 function PlayRunning() {
-	Debug.Log("Running");
+	//Debug.Log("Running");
 	if(walkingAudio.isPlaying==true){
 		walkingAudio.Pause();
 	}
@@ -201,11 +201,9 @@ function PlayRunning() {
 
 function PlayJumpStart() {
 	Debug.Log("Jumped");
-	/*
 	if(jumpStartAudio.isPlaying==false){
     	jumpStartAudio.Play();
     }
-    */
 }
 
 function PlayJumpLand() {
@@ -218,7 +216,7 @@ function PlayJumpLand() {
 }
 
 function PlayRoosterCrow() {
-	Debug.Log("Play Rooster Crow");
+	//Debug.Log("Play Rooster Crow");
 
 	if(roosterCrowAudio.isPlaying==false){
     	roosterCrowAudio.Play();
@@ -227,7 +225,7 @@ function PlayRoosterCrow() {
 }
 
 function PauseRoosterCrow() {
-	Debug.Log("Pause Rooster Crow");
+	//Debug.Log("Pause Rooster Crow");
 	if(roosterCrowAudio.isPlaying){
     	roosterCrowAudio.Pause();
     }

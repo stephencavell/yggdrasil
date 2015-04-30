@@ -66,6 +66,7 @@ public class LifController : MonoBehaviour {
 			if (grounded && Input.GetKeyDown ("up")) {
 				anim.SetBool ("Ground", false);
 				rigidbody2D.AddForce (new Vector2 (0, jumpForce));
+				_mainCamera.SendMessage("PlayJumpStart");
 			}
 		}
 	}

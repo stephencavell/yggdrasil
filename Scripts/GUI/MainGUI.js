@@ -42,7 +42,6 @@ function Start () {
 }
 
 function Update () {
-	Debug.Log("Monitor Audio: "+checkAudio);
 	if(checkAudio){
 		audioBarLengthUpdate();
 	}
