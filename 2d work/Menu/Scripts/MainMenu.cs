@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour {
 
 		//Display our buttons
 		if (GUI.Button (new Rect (Screen.width * guiPlacementX1, Screen.height * guiPlacementY1, Screen.width * .5f, Screen.height * .1f), "Play")) {  
-			Application.LoadLevel("stephenLevel");
+			Application.LoadLevel("GenderChoice");
 		}
 
 		if (GUI.Button (new Rect (Screen.width * guiPlacementX2, Screen.height * guiPlacementY2, Screen.width * .5f, Screen.height * .1f), "Controls")) {  
