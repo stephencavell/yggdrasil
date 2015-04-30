@@ -14,6 +14,7 @@ public class CloseToRooster : MonoBehaviour {
 	
 	private GameObject rooster;
 	public Animator rooanim;
+	public AudioSource roocatch;
 	
 	private int position;
 	public Vector3 checkpoint1;
@@ -170,7 +171,7 @@ public class CloseToRooster : MonoBehaviour {
 					_playerController.setControllable(false);
 					this.transform.position = new Vector2(playerObject.transform.position.x, playerObject.transform.position.y + 1);
 					playerObject.SendMessage("monitorAudio", false);
-
+					roocatch.Play();
 				}
 			}
 		}
