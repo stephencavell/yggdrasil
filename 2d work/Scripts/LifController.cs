@@ -32,17 +32,17 @@ public class LifController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		bool running = false;
+		grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
+		anim.SetBool ("Ground", grounded);
+		anim.SetBool ("running", running);
+		anim.SetFloat ("vSpeed", rigidbody2D.velocity.y);
+		anim.SetFloat ("Speed", 0);
 		if(isControllable==true){
-			bool running = false;
-			grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
-			anim.SetBool ("Ground", grounded);
-			anim.SetBool ("running", running);
-
 			float move = Input.GetAxis ("Horizontal");
 
-
 			anim.SetFloat("Speed", Mathf.Abs (move));
-			anim.SetFloat ("vSpeed", rigidbody2D.velocity.y);
+
 			if(move!=0){
 				if(Input.GetKey(KeyCode.LeftShift)||Input.GetKey(KeyCode.RightShift)){
 					running = true;

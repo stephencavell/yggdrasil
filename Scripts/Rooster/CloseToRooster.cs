@@ -9,6 +9,8 @@ public class CloseToRooster : MonoBehaviour {
 	private SmoothFollow _mainCamera;
 	private GameObject mainCameraSound;
 	private CutSceneManager cutScene;
+
+	private Animator lifAnim;
 	
 	private GameObject rooster;
 	public Animator rooanim;
@@ -39,6 +41,7 @@ public class CloseToRooster : MonoBehaviour {
 	void Start () {
 		position = 0;
 		playerObject = GameObject.FindGameObjectWithTag("Player");
+		lifAnim = playerObject.GetComponent<Animator> ();
 		mainCameraSound = GameObject.FindGameObjectWithTag ("MainCamera");
 		_mainCamera = mainCameraSound.GetComponent<SmoothFollow>();
 		checkpointManager = playerObject.GetComponent<CheckpointManager>();
@@ -161,8 +164,11 @@ public class CloseToRooster : MonoBehaviour {
 				} else {
 					Debug.Log ("End Collision");
 					PauseRoosterCrow();
-					Destroy(this.gameObject);
+					//Destroy(this.gameObject);
 					roosterSound = false;
+					lifAnim.SetBool("roocatch", true);
+					_playerController.setControllable(false);
+					this.transform.position = new Vector2(playerObject.transform.position.x, playerObject.transform.position.y + 1);
 				}
 			}
 		}
