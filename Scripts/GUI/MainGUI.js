@@ -88,7 +88,7 @@ function audioBarLengthUpdate(){
 	}
 	if(roosterQuickness<=0){
 		Debug.Log("In here. Death Time: "+deathTime);
-		if(deathTime >= 1){
+		if(deathTime >= 5){
 			this.SendMessage("RevertToCheckpoint");
 			roosterScript.SendMessage("RevertToCheckpoint");
 			ResetRoosterTime();

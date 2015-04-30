@@ -36,6 +36,8 @@ public class CloseToRooster : MonoBehaviour {
 	Transform mySphere;
 	bool flying;
 	bool roosterSound;
+	bool isFinished;
+	float endTimeout;
 	
 	
 	// Use this for initialization
@@ -50,26 +52,35 @@ public class CloseToRooster : MonoBehaviour {
 		flying = false;
 		roosterSound = true;
 		cutScene = playerObject.GetComponent<CutSceneManager> ();
+		isFinished = false;
+		endTimeout = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		rooanim.SetBool ("flying", flying);
-		if(this.transform!=null){
-			if(flying == true){
-				BezierCurve();
-			} else {
-				StartPointX = this.transform.position.x;
-				StartPointY = this.transform.position.y;
-			}
-			if(roosterSound==true&&!cutScene.inPauseMenu&&!cutScene.inCutScene()){
-				if(crowInterval>=1){
-					PlayRoosterCrow();
-					crowInterval = 0;
+		if (isFinished == false) {
+			rooanim.SetBool ("flying", flying);
+			if (this.transform != null) {
+				if (flying == true) {
+					BezierCurve ();
+				} else {
+					StartPointX = this.transform.position.x;
+					StartPointY = this.transform.position.y;
 				}
-				crowInterval=Time.deltaTime*57;
-			} else {
-				PauseRoosterCrow();
+				if (roosterSound == true && !cutScene.inPauseMenu && !cutScene.inCutScene ()) {
+					if (crowInterval >= 1) {
+						PlayRoosterCrow ();
+						crowInterval = 0;
+					}
+					crowInterval = Time.deltaTime * 57;
+				} else {
+					PauseRoosterCrow ();
+				}
+			}
+		} else {
+			endTimeout = endTimeout+Time.deltaTime;
+			if(endTimeout>=2){
+				Application.LoadLevel("Ending");
 			}
 		}
 	}
@@ -172,6 +183,7 @@ public class CloseToRooster : MonoBehaviour {
 					playerObject.SendMessage("monitorAudio", false);
 					roocatch.Play();
 					mainCameraSound.SendMessage("PlaySuccess");
+					isFinished = true;
 				}
 			}
 		}
