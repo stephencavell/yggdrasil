@@ -25,9 +25,11 @@ public class CutSceneManager : MonoBehaviour {
 	private GUIStyle windowStyle;
 	private GUIStyle buttonStyle;
 	private bool firstDialogue;
-	private bool inPauseMenu;
+	public bool inPauseMenu;
+	private bool isCutting;
 	
 	void  Start (){
+		isCutting = true;
 		windowStyle = new GUIStyle();
 		windowStyle.stretchWidth = true;
 		windowStyle.stretchHeight = true;
@@ -95,6 +97,7 @@ public class CutSceneManager : MonoBehaviour {
 						if(currentScene==cutScenes.Count-1){
 							_playerController.setControllable(true);
 							playerObject.SendMessage("monitorAudio", true);
+							isCutting = false;
 						}
 						currentScene++;
 					}
@@ -138,6 +141,10 @@ public class CutSceneManager : MonoBehaviour {
 	
 	public void pauseMenu(bool val){
 		inPauseMenu = val;
+	}
+
+	public bool inCutScene(){
+		return isCutting;
 	}
 
 	public void moveLoki(){

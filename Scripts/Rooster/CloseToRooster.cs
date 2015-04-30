@@ -8,6 +8,7 @@ public class CloseToRooster : MonoBehaviour {
 	private LifController _playerController;
 	private SmoothFollow _mainCamera;
 	private GameObject mainCameraSound;
+	private CutSceneManager cutScene;
 	
 	private GameObject rooster;
 	public Animator rooanim;
@@ -43,11 +44,11 @@ public class CloseToRooster : MonoBehaviour {
 		_playerController = playerObject.GetComponent<LifController>();
 		flying = false;
 		roosterSound = true;
+		cutScene = playerObject.GetComponent<CutSceneManager> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//rooster = GameObject.FindGameObjectWithTag ("Rooster");
 		rooanim.SetBool ("flying", flying);
 		if(this.transform!=null){
 			if(flying == true){
@@ -56,8 +57,10 @@ public class CloseToRooster : MonoBehaviour {
 				StartPointX = this.transform.position.x;
 				StartPointY = this.transform.position.y;
 			}
-			if(roosterSound==true){
+			if(roosterSound==true&&!cutScene.inPauseMenu&&!cutScene.inCutScene()){
 				PlayRoosterCrow();
+			} else {
+				PauseRoosterCrow();
 			}
 		}
 	}
@@ -100,7 +103,7 @@ public class CloseToRooster : MonoBehaviour {
 					Debug.Log ("Position: "+position+". StartPoint: ("+StartPointX+","+StartPointY+"). Control Point: ("+ControlPointX+","+ControlPointY+"). End Point: ("+EndPointX+","+EndPointY+")");
 					
 					flying = true;
-					mainCameraSound.SendMessage("PauseRoosterCrow");
+					PauseRoosterCrow();
 					mainCameraSound.SendMessage("PlayWingsFlapping");
 					roosterSound = false;
 					position++;
@@ -109,8 +112,7 @@ public class CloseToRooster : MonoBehaviour {
 					BezierTime = 0;
 				} else if(position==6){
 					Debug.Log("IN HERE");
-					
-					mainCameraSound.SendMessage("PauseRoosterCrow");
+					PauseRoosterCrow();
 					Destroy(this.gameObject);
 					roosterSound = false;
 				}
@@ -162,5 +164,9 @@ public class CloseToRooster : MonoBehaviour {
 			_playerController.setControllable(true);
 			mainCameraSound.SendMessage("PauseWingsFlapping");
 		}
+	}
+
+	void PauseRoosterCrow(){
+		mainCameraSound.SendMessage("PauseRoosterCrow");
 	}
 }
