@@ -11,8 +11,6 @@ public class LifController : MonoBehaviour {
 
 	Animator anim;
 
-	private CutSceneManager cut;
-
 	public bool grounded = false;
 	public Transform groundCheck;
 	float groundRadius = 0.1f;
@@ -21,12 +19,14 @@ public class LifController : MonoBehaviour {
 	public float jumpForce = 10f;
 
 	public bool isControllable;
+
+	public GameObject _mainCamera;
 	
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
 		isControllable = false;
-		cut = GetComponent<CutSceneManager>();
+		_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 	}
 	
 	// Update is called once per frame
@@ -40,11 +40,14 @@ public class LifController : MonoBehaviour {
 
 			anim.SetFloat("Speed", Mathf.Abs (move));
 			anim.SetFloat ("vSpeed", rigidbody2D.velocity.y);
-
-			if(Input.GetKey(KeyCode.LeftShift)||Input.GetKey(KeyCode.RightShift)){
-				rigidbody2D.velocity = new Vector2 (move * runSpeed, rigidbody2D.velocity.y);
-			} else {
-				rigidbody2D.velocity = new Vector2 (move * walkSpeed, rigidbody2D.velocity.y);
+			if(move!=0){
+				if(Input.GetKey(KeyCode.LeftShift)||Input.GetKey(KeyCode.RightShift)){
+					_mainCamera.SendMessage("PlayRunning");
+					rigidbody2D.velocity = new Vector2 (move * runSpeed, rigidbody2D.velocity.y);
+				} else {
+					_mainCamera.SendMessage("PlayWalking");
+					rigidbody2D.velocity = new Vector2 (move * walkSpeed, rigidbody2D.velocity.y);
+				}
 			}
 			if(move > 0 && !facingRight)
 				Flip ();

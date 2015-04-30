@@ -181,32 +181,22 @@ function PlayRaven() {
 
 function PlayWalking() {
 	Debug.Log("Walking");
-	/*
-	if(trottingAudio.isPlaying==true){
-		trottingAudio.Pause();
-	}
 	if(runningAudio.isPlaying==true){
 		runningAudio.Pause();
 	}
 	if(walkingAudio.isPlaying==false){
     	walkingAudio.Play();
     }
-    */
 }
 
 function PlayRunning() {
 	Debug.Log("Running");
-	/*
 	if(walkingAudio.isPlaying==true){
 		walkingAudio.Pause();
-	}
-	if(trottingAudio.isPlaying==true){
-		trottingAudio.Pause();
 	}
 	if(runningAudio.isPlaying==false){
     	runningAudio.Play();
     }
-    */
 }
 
 function PlayJumpStart() {
