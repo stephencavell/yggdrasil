@@ -4,6 +4,8 @@ using System.Collections;
 public class LifController : MonoBehaviour {
 
 	public float maxSpeed = 10f;
+	public float walkSpeed = 10f;
+	public float runSpeed = 15f;
 	bool facingRight = true;
 
 	Animator anim;
@@ -37,8 +39,13 @@ public class LifController : MonoBehaviour {
 			anim.SetFloat("Speed", Mathf.Abs (move));
 			anim.SetFloat ("vSpeed", rigidbody2D.velocity.y);
 
-			rigidbody2D.velocity = new Vector2 (move * maxSpeed, rigidbody2D.velocity.y);
-
+			if(Input.GetKey(KeyCode.LeftShift)||Input.GetKey(KeyCode.RightShift)){
+				Debug.Log("Running");
+				rigidbody2D.velocity = new Vector2 (move * runSpeed, rigidbody2D.velocity.y);
+			} else {
+				Debug.Log("Walking");
+				rigidbody2D.velocity = new Vector2 (move * walkSpeed, rigidbody2D.velocity.y);
+			}
 			if(move > 0 && !facingRight)
 				Flip ();
 			else if(move < 0 && facingRight)
