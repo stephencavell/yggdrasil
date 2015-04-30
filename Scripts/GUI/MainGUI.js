@@ -16,6 +16,7 @@ private var textStyle : GUIStyle;
 
 private var audioC : PlayerAudioController;
 private var roosterScript : GameObject;
+private var checkAudio : boolean;
 
 function Start () {
 	audioC = GameObject.FindGameObjectWithTag("MainCamera").GetComponent(PlayerAudioController);
@@ -37,10 +38,13 @@ function Start () {
 	textStyle.alignment = TextAnchor.MiddleCenter;
 	textStyle.richText = true;
 	textStyle.font = guiFont;
+	checkAudio=false;
 }
 
 function Update () {
-	audioBarLengthUpdate();
+	if(checkAudio){
+		audioBarLengthUpdate();
+	}
 }
 
 function OnGUI() {
@@ -81,4 +85,8 @@ function audioBarLengthUpdate(){
 
 function ResetRoosterTime(){
 	roosterQuickness=originalRoosterQuickness;
+}
+
+function monitorAudio(thisValue:boolean){
+	checkAudio = thisValue;
 }

@@ -7,6 +7,7 @@ public class CutSceneManager : MonoBehaviour {
 	private List<CutSceneObject> cutScenes = new List<CutSceneObject>();
 	private GameObject playerObject;
 	private GameObject roosterObject;
+	private GameObject lokiObject;
 	private LifController _playerController;
 	private int currentScene = 0;
 
@@ -46,9 +47,10 @@ public class CutSceneManager : MonoBehaviour {
 		//Add Scenes
 		playerObject = GameObject.FindGameObjectWithTag("Player");
 		roosterObject = GameObject.FindGameObjectWithTag("Rooster");
+		lokiObject = GameObject.FindGameObjectWithTag("Loki");
 		cutScenes.Add(new CutSceneObject(playerObject.transform, "In a series of events leading up to Ragnarok, Loki has just killed Baldur, signifying the imminent start of war and chaos in the 9 realms that span across Yggdrasil. "));
 		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Loki has previously kidnapped Lifthrasir in an effort to prevent the repopulation of the world after Ragnarok. Lif has been attempting to track Loki and his efforts have landed him in Muspelheim, a land inhibited by the fire giants and demons.  "));
-		cutScenes.Add(new CutSceneObject(playerObject.transform, "Raven: Lif, you are now in Muspelheim. As you can see, this world is the land of fire and lava. Many giants and demons live here. The ruler of this world, Surt, lives at the top of that volcano. Surt is known to be a very violent leader, a merciless slayer wielding a flaming sword. You must be careful."));
+		cutScenes.Add(new CutSceneObject(lokiObject.transform, "Raven: Lif, you are now in Muspelheim. As you can see, this world is the land of fire and lava. Many giants and demons live here. The ruler of this world, Surt, lives at the top of that volcano. Surt is known to be a very violent leader, a merciless slayer wielding a flaming sword. You must be careful."));
 		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Player: Look, there’s Loki with Lifthrasir! I have to stop him and save her!"));
 		cutScenes.Add(new CutSceneObject(playerObject.transform, "Player: What is Loki doing now??"));
 		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Raven: Oh, no. He is waking up the rooster. Quick we have to stop that rooster!"));
@@ -87,6 +89,7 @@ public class CutSceneManager : MonoBehaviour {
 						cutScenes[currentScene].startAll();
 						if(currentScene==cutScenes.Count-1){
 							_playerController.setControllable(true);
+							playerObject.SendMessage("monitorAudio", true);
 						}
 						currentScene++;
 					}
