@@ -10,19 +10,16 @@ public class CloseToRooster : MonoBehaviour {
 	
 	private GameObject rooster;
 	public Animator rooanim;
-	public AudioSource wingFlap;
 	
 	private int position;
-	public int newPositionX1;
-	public int newPositionY1;
 	public Vector3 checkpoint1;
 	public Vector3 checkpoint2;
 	public Vector3 checkpoint3;
 	public Vector3 checkpoint4;
 	public Vector3 checkpoint5;
 	public Vector3 checkpoint6;
-	float StartPointX = 0;
-	float StartPointY = 0;
+	float StartPointX = 29.1f;
+	float StartPointY = 7.424f;
 	float ControlPointX = 40;
 	float ControlPointY = 14;
 	float EndPointX = 66;
@@ -42,8 +39,6 @@ public class CloseToRooster : MonoBehaviour {
 		_mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SmoothFollow>();
 		checkpointManager = playerObject.GetComponent<CheckpointManager>();
 		_playerController = playerObject.GetComponent<LifController>();
-		EndPointX = newPositionX1;
-		EndPointY = newPositionY1;
 		flying = false;
 		roosterSound = true;
 	}
@@ -52,8 +47,6 @@ public class CloseToRooster : MonoBehaviour {
 	void Update () {
 		//rooster = GameObject.FindGameObjectWithTag ("Rooster");
 		rooanim.SetBool ("flying", flying);
-		if (flying && !wingFlap.isPlaying)
-			wingFlap.Play ();
 		if(this.transform!=null){
 			PlayRoosterCrow();
 			if(flying == true){
@@ -72,28 +65,55 @@ public class CloseToRooster : MonoBehaviour {
 	{
 		if(other.gameObject.tag == "Player")
 		{
-			Debug.Log ("Collided With Rooster: "+other.gameObject.tag);
 			if(flying==false){
-				if(position==0){
+				if(position<=6){
 					playerObject.SendMessage("ResetRoosterTime");
-					EndPointX = newPositionX1;
-					EndPointY = newPositionY1;
+					if(StartPointX<35){
+						StartPointX = checkpoint1.x;
+						StartPointY = checkpoint1.y;
+						EndPointX = checkpoint2.x;
+						EndPointY = checkpoint2.y;
+					} else if(StartPointX<60) {
+						StartPointX = checkpoint2.x;
+						StartPointY = checkpoint2.y;
+						EndPointX = checkpoint3.x;
+						EndPointY = checkpoint3.y;
+					} else if(StartPointX<90) {
+						StartPointX = checkpoint3.x;
+						StartPointY = checkpoint3.y;
+						EndPointX = checkpoint4.x;
+						EndPointY = checkpoint4.y;
+					} else if(StartPointX<110) {
+						StartPointX = checkpoint4.x;
+						StartPointY = checkpoint4.y;
+						EndPointX = checkpoint5.x;
+						EndPointY = checkpoint5.y;
+					} else if(StartPointX<140) {
+						StartPointX = checkpoint5.x;
+						StartPointY = checkpoint5.y;
+						EndPointX = checkpoint6.x;
+						EndPointY = checkpoint6.y;
+					}
 					ControlPointX = StartPointX+((EndPointX-StartPointX)*3/4);
-					//ControlPointY =;
+					//ControlPointY = StartPointY+((EndPointY-StartPointY));
+					Debug.Log ("Position: "+position+". StartPoint: ("+StartPointX+","+StartPointY+"). Control Point: ("+ControlPointX+","+ControlPointY+"). End Point: ("+EndPointX+","+EndPointY+")");
+					
 					flying = true;
 					playerObject.SendMessage("PauseRoosterCrow");
 					roosterSound = false;
 					position++;
 					_mainCamera.target = this.transform;
 					_playerController.setControllable(false);
-					//Destroy(this.collider2D);
-					BoxCollider2D box = GetComponent<BoxCollider2D>();
-					box.size=new Vector2(0.5f,0.5f);
-				} else if(position==1){
+					BezierTime = 0;
+				} else if(position==6){
 					Debug.Log("IN HERE");
 					playerObject.SendMessage("PauseRoosterCrow");
 					Destroy(this.gameObject);
 					roosterSound = false;
+				}
+				if(position==5){
+					BoxCollider2D box = GetComponent<BoxCollider2D>();
+					box.size=new Vector2(0.5f,0.5f);
 				}
 			}
 		}
@@ -104,7 +124,8 @@ public class CloseToRooster : MonoBehaviour {
 	}
 	
 	void RevertToCheckpoint() {
-		int checkpoint = checkpointManager.GetCheckpoint();
+		Debug.Log ("Reverting To Checkpoint");
+		int checkpoint = playerObject.GetComponent<CheckpointManager>().GetCheckpoint();
 		Vector3 newPosition = this.transform.position;
 		if (checkpoint >= 6) {
 			newPosition = checkpoint6;
@@ -127,15 +148,13 @@ public class CloseToRooster : MonoBehaviour {
 		if (BezierTime >= 1) {
 			BezierTime = 0;
 		}
-		
 		CurveX = (((1-BezierTime)*(1-BezierTime)) * StartPointX) + (2 * BezierTime * (1 - BezierTime) * ControlPointX) + ((BezierTime * BezierTime) * EndPointX);
 		CurveY = (((1-BezierTime)*(1-BezierTime)) * StartPointY) + (2 * BezierTime * (1 - BezierTime) * ControlPointY) + ((BezierTime * BezierTime) * EndPointY);
 		this.transform.position = new Vector3(CurveX, CurveY, 0);
-		if(this.transform.position.x >= newPositionX1-1){
-			Debug.Log ("Done");
+		if(this.transform.position.x >= EndPointX-2){
 			flying = false;
 			roosterSound = true;
-			this.transform.position = new Vector3(newPositionX1, newPositionY1, 0);
+			this.transform.position = new Vector3(EndPointX, EndPointY, 0);
 			_mainCamera.target = playerObject.transform;
 			_playerController.setControllable(true);
 		}
