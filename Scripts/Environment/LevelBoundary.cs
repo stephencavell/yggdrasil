@@ -5,11 +5,13 @@ public class LevelBoundary : MonoBehaviour {
 	
 	private GameObject playerObject;
 	private GameObject roosterObject;
+	private GameObject _mainCamera;
 
 	// Use this for initialization
 	void Start () {
 		playerObject = GameObject.FindGameObjectWithTag("Player");
 		roosterObject = GameObject.FindGameObjectWithTag("Rooster");
+		_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 	}
 	
 	// Update is called once per frame
@@ -22,9 +24,10 @@ public class LevelBoundary : MonoBehaviour {
 		if(other.gameObject.tag == "Player")
 		{
 			Debug.Log("Player Dead");
-			playerObject.SendMessage("PlayDeath");
+			_mainCamera.SendMessage("PlayDeath");
 			playerObject.SendMessage("RevertToCheckpoint");
 			roosterObject.SendMessage("RevertToCheckpoint");
+			playerObject.SendMessage("ResetRoosterTime");
 		}
 	}
 }

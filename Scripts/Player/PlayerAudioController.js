@@ -10,6 +10,7 @@ public var roosterCrowClip : AudioClip;
 public var walkingClip : AudioClip;
 public var trottingClip : AudioClip;
 public var runningClip : AudioClip;
+public var flappingWingsClip : AudioClip;
 public var backgroundClip : AudioClip;
 
 private var hurtAudio : AudioSource;
@@ -22,6 +23,7 @@ private var roosterCrowAudio : AudioSource;
 private var walkingAudio : AudioSource;
 private var trottingAudio : AudioSource;
 private var runningAudio : AudioSource;
+private var flappingWingsAudio : AudioSource;
 private var backgroundAudio : AudioSource;
 
 var qSamples: int = 1024;  // array size
@@ -91,6 +93,14 @@ function Awake() {
     roosterCrowAudio.playOnAwake = false;
     roosterCrowAudio.volume = 0.8;
     roosterCrowAudio.dopplerLevel = 0.0;
+    sources.Push(roosterCrowAudio);
+    
+    flappingWingsAudio = gameObject.AddComponent(AudioSource);
+    flappingWingsAudio.clip = flappingWingsClip;
+    flappingWingsAudio.loop = true;
+    flappingWingsAudio.playOnAwake = false;
+    flappingWingsAudio.volume = 0.8;
+    flappingWingsAudio.dopplerLevel = 0.0;
     sources.Push(roosterCrowAudio);
 
     walkingAudio = gameObject.AddComponent(AudioSource);
@@ -228,11 +238,25 @@ function PlayRoosterCrow() {
 
 function PauseRoosterCrow() {
 	Debug.Log("Pause Rooster Crow");
-	/*
 	if(roosterCrowAudio.isPlaying){
     	roosterCrowAudio.Pause();
     }
-    */
+}
+
+function PlayWingsFlapping() {
+	Debug.Log("Play Rooster Crow");
+
+	if(flappingWingsAudio.isPlaying==false){
+    	flappingWingsAudio.Play();
+    }
+
+}
+
+function PauseWingsFlapping() {
+	Debug.Log("Pause Rooster Crow");
+	if(flappingWingsAudio.isPlaying){
+    	flappingWingsAudio.Pause();
+    }
 }
 
 function AnalyzeSound(aud:AudioSource){

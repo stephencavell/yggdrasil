@@ -3,12 +3,12 @@ private var audioBarLength : float;
 private var maxAudio : float;
 private var curAudio : float;
 private var maxBarWidth : float;
-private var originalRoosterQuickness : float;
 
 public var foregroundTexture : Texture2D;
 public var backgroundTexture : Texture2D;
 public var guiFont : Font;
 public var roosterQuickness : float;
+public var originalRoosterQuickness : float;
 
 private var foregroundStyle : GUIStyle;
 private var backgroundStyle : GUIStyle;
@@ -18,7 +18,7 @@ private var audioC : PlayerAudioController;
 private var roosterScript : GameObject;
 
 function Start () {
-	audioC = GetComponent(PlayerAudioController);
+	audioC = GameObject.FindGameObjectWithTag("MainCamera").GetComponent(PlayerAudioController);
 	roosterScript = GameObject.FindGameObjectWithTag("Rooster");
 	audioBarLength = 0;
 	maxAudio = 200;
@@ -75,6 +75,7 @@ function audioBarLengthUpdate(){
 	if(roosterQuickness<=0){
 		this.SendMessage("RevertToCheckpoint");
 		roosterScript.SendMessage("RevertToCheckpoint");
+		ResetRoosterTime();
 	}
 }
 

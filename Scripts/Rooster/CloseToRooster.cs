@@ -7,6 +7,7 @@ public class CloseToRooster : MonoBehaviour {
 	private CheckpointManager checkpointManager;
 	private LifController _playerController;
 	private SmoothFollow _mainCamera;
+	private GameObject mainCameraSound;
 	
 	private GameObject rooster;
 	public Animator rooanim;
@@ -36,7 +37,8 @@ public class CloseToRooster : MonoBehaviour {
 	void Start () {
 		position = 0;
 		playerObject = GameObject.FindGameObjectWithTag("Player");
-		_mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SmoothFollow>();
+		mainCameraSound = GameObject.FindGameObjectWithTag ("MainCamera");
+		_mainCamera = mainCameraSound.GetComponent<SmoothFollow>();
 		checkpointManager = playerObject.GetComponent<CheckpointManager>();
 		_playerController = playerObject.GetComponent<LifController>();
 		flying = false;
@@ -48,7 +50,6 @@ public class CloseToRooster : MonoBehaviour {
 		//rooster = GameObject.FindGameObjectWithTag ("Rooster");
 		rooanim.SetBool ("flying", flying);
 		if(this.transform!=null){
-			PlayRoosterCrow();
 			if(flying == true){
 				BezierCurve();
 			} else {
@@ -99,7 +100,8 @@ public class CloseToRooster : MonoBehaviour {
 					Debug.Log ("Position: "+position+". StartPoint: ("+StartPointX+","+StartPointY+"). Control Point: ("+ControlPointX+","+ControlPointY+"). End Point: ("+EndPointX+","+EndPointY+")");
 					
 					flying = true;
-					playerObject.SendMessage("PauseRoosterCrow");
+					mainCameraSound.SendMessage("PauseRoosterCrow");
+					mainCameraSound.SendMessage("PlayWingsFlapping");
 					roosterSound = false;
 					position++;
 					_mainCamera.target = this.transform;
@@ -107,7 +109,8 @@ public class CloseToRooster : MonoBehaviour {
 					BezierTime = 0;
 				} else if(position==6){
 					Debug.Log("IN HERE");
-					playerObject.SendMessage("PauseRoosterCrow");
+					
+					mainCameraSound.SendMessage("PauseRoosterCrow");
 					Destroy(this.gameObject);
 					roosterSound = false;
 				}
@@ -120,7 +123,7 @@ public class CloseToRooster : MonoBehaviour {
 	}
 	
 	void PlayRoosterCrow(){
-		playerObject.SendMessage("PlayRoosterCrow");
+		mainCameraSound.SendMessage("PlayRoosterCrow");
 	}
 	
 	void RevertToCheckpoint() {
@@ -157,6 +160,7 @@ public class CloseToRooster : MonoBehaviour {
 			this.transform.position = new Vector3(EndPointX, EndPointY, 0);
 			_mainCamera.target = playerObject.transform;
 			_playerController.setControllable(true);
+			mainCameraSound.SendMessage("PauseWingsFlapping");
 		}
 	}
 }
