@@ -8,6 +8,8 @@ public class CutSceneManager : MonoBehaviour {
 	private GameObject playerObject;
 	private GameObject roosterObject;
 	private GameObject lokiObject;
+	private GameObject ravenObject;
+	private GameObject lifthrasirObject;
 	private LifController _playerController;
 	private int currentScene = 0;
 
@@ -48,16 +50,19 @@ public class CutSceneManager : MonoBehaviour {
 		playerObject = GameObject.FindGameObjectWithTag("Player");
 		roosterObject = GameObject.FindGameObjectWithTag("Rooster");
 		lokiObject = GameObject.FindGameObjectWithTag("Loki");
+		ravenObject = GameObject.FindGameObjectWithTag("Raven");
+		lifthrasirObject = GameObject.FindGameObjectWithTag("Lifthrasir");
 		cutScenes.Add(new CutSceneObject(playerObject.transform, "In a series of events leading up to Ragnarok, Loki has just killed Baldur, signifying the imminent start of war and chaos in the 9 realms that span across Yggdrasil. "));
-		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Loki has previously kidnapped Lifthrasir in an effort to prevent the repopulation of the world after Ragnarok. Lif has been attempting to track Loki and his efforts have landed him in Muspelheim, a land inhibited by the fire giants and demons.  "));
-		cutScenes.Add(new CutSceneObject(lokiObject.transform, "Raven: Lif, you are now in Muspelheim. As you can see, this world is the land of fire and lava. Many giants and demons live here. The ruler of this world, Surt, lives at the top of that volcano. Surt is known to be a very violent leader, a merciless slayer wielding a flaming sword. You must be careful."));
-		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Player: Look, there’s Loki with Lifthrasir! I have to stop him and save her!"));
-		cutScenes.Add(new CutSceneObject(playerObject.transform, "Player: What is Loki doing now??"));
-		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Raven: Oh, no. He is waking up the rooster. Quick we have to stop that rooster!"));
+		cutScenes.Add(new CutSceneObject(lifthrasirObject.transform, "Loki has previously kidnapped Lifthrasir in an effort to prevent the repopulation of the world after Ragnarok. Lif has been attempting to track Loki and his efforts have landed him in Muspelheim, a land inhibited by the fire giants and demons.  "));
+		cutScenes.Add(new CutSceneObject(ravenObject.transform, "One of Odin's raven, Huginn, is serving as a correspondent as you attempt to end Loki's trickery."));
+		cutScenes.Add(new CutSceneObject(ravenObject.transform, "Odin: Lif, you are now in Muspelheim. As you can see, this world is the land of fire and lava. Many giants and demons live here. The ruler of this world, Surt, lives at the top of that volcano. Surt is known to be a very violent leader, a merciless slayer wielding a flaming sword. You must be careful."));
+		cutScenes.Add(new CutSceneObject(lifthrasirObject.transform, "Player: Look, there’s Loki with Lifthrasir! I have to stop him and save her!"));
+		cutScenes.Add(new CutSceneObject(lokiObject.transform, "Player: What is Loki doing now??"));
+		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Odin: Oh, no. He is waking up the rooster. Quick, we have to stop him!"));
 		cutScenes.Add(new CutSceneObject(playerObject.transform, "Player: What does the rooster have to do with anything? I need to save Lifthrasir!"));
-		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Raven: Wait, Lif. You must listen to me. We HAVE to stop that rooster. Surt is asleep right now. Loki has just convinced the rooster to wake him up and warn him that Ragnarok has begun. If that rooster gets to Surt and wakes him up, there is impending doom for all of us. He will use his sword to burn your home down!"));
+		cutScenes.Add(new CutSceneObject(ravenObject.transform, "Odin: Wait, Lif. You must listen to me. We HAVE to stop that rooster. Surt is asleep right now. Loki has just convinced the rooster to wake him up and warn him that Ragnarok has begun. If that rooster gets to Surt and wakes him up, there is impending doom for all of us. He will use his sword to burn your home down!"));
 		cutScenes.Add(new CutSceneObject(playerObject.transform, "Player: Well, what are we waiting for? Let’s stop that rooster!"));
-		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Raven: Okay. Be careful not to let it make too much noise. The bar at the top left shows the noise meter. If that meter reaches the top and stays there, then it’s all over."));
+		cutScenes.Add(new CutSceneObject(roosterObject.transform, "Raven: Okay. Be careful not to let it make too much noise. The bar at the top right shows the noise meter. If that meter reaches the top and stays there, then it’s all over."));
 		cutScenes.Add(new CutSceneObject(playerObject.transform, ""));
 
 
@@ -87,6 +92,9 @@ public class CutSceneManager : MonoBehaviour {
 						//MainScriptManager.isPause = !MainScriptManager.isPause;
 						Debug.Log("Paused Next Speaker Will Start");
 						cutScenes[currentScene].startAll();
+						if(currentScene==cutScenes.Count-2){
+							moveLoki();
+						}
 						if(currentScene==cutScenes.Count-1){
 							_playerController.setControllable(true);
 							playerObject.SendMessage("monitorAudio", true);
@@ -101,7 +109,9 @@ public class CutSceneManager : MonoBehaviour {
 	void  OnGUI (){
 		if(inPauseMenu==false){
 			if (currentScene < cutScenes.Count) {
-				GUI.TextArea (new Rect (50, Screen.height - 150, Screen.width - 100, 100), cutScenes [currentScene - 1].getDialogue (), Screen.width - 100);
+				//GUI.TextArea (new Rect (50, Screen.height - 150, Screen.width - 100, 100), cutScenes [currentScene - 1].getDialogue (), Screen.width - 100);
+				GUI.Label(new Rect (55, Screen.height - 145, Screen.width - 110, 90), "<size=18>"+cutScenes [currentScene - 1].getDialogue()+"</size>");
+				//GUI.Label(new Rect (, Screen.height - 145, Screen.width - 110, 90), "<size=18>"+cutScenes [currentScene - 1].getDialogue()+"</size>");
 				GUI.Label (new Rect (50, Screen.height - 150, Screen.width - 100, 100), GUIContent.none, windowStyle);
 			}
 		}
@@ -131,5 +141,10 @@ public class CutSceneManager : MonoBehaviour {
 	
 	public void pauseMenu(bool val){
 		inPauseMenu = val;
+	}
+
+	public void moveLoki(){
+		Destroy (lokiObject);
+		Destroy (lifthrasirObject);
 	}
 }
