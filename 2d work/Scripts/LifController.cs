@@ -12,6 +12,7 @@ public class LifController : MonoBehaviour {
 	Animator anim;
 
 	public bool grounded = false;
+	public bool running = false;
 	public Transform groundCheck;
 	float groundRadius = 0.1f;
 	public LayerMask whatIsGround;
@@ -32,8 +33,10 @@ public class LifController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if(isControllable==true){
+			running = false;
 			grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
 			anim.SetBool ("Ground", grounded);
+			anim.SetBool ("running", running);
 
 			float move = Input.GetAxis ("Horizontal");
 
@@ -42,6 +45,8 @@ public class LifController : MonoBehaviour {
 			anim.SetFloat ("vSpeed", rigidbody2D.velocity.y);
 			if(move!=0){
 				if(Input.GetKey(KeyCode.LeftShift)||Input.GetKey(KeyCode.RightShift)){
+					running = true;
+					anim.SetBool ("running", running);
 					_mainCamera.SendMessage("PlayRunning");
 					rigidbody2D.velocity = new Vector2 (move * runSpeed, rigidbody2D.velocity.y);
 				} else {
