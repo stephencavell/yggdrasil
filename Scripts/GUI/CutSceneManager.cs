@@ -80,7 +80,7 @@ public class CutSceneManager : MonoBehaviour {
 			cutScenes.Add(new CutSceneObject(lifthrasirObject.transform, "Loki has previously kidnapped Lif in an effort to prevent the repopulation of the world after Ragnarok. Lifthrasir has been attempting to track Loki and his efforts have landed him in Muspelheim, a land inhibited by the fire giants and demons.  "));
 			cutScenes.Add(new CutSceneObject(ravenObject.transform, "One of Odin's raven, Huginn, is serving as a correspondent as you attempt to end Loki's trickery."));
 			cutScenes.Add(new CutSceneObject(ravenObject.transform, "Odin: Lifthrasir, you are now in Muspelheim. As you can see, this world is the land of fire and lava. Many giants and demons live here. The ruler of this world, Surt, lives at the top of that volcano. Surt is known to be a very violent leader, a merciless slayer wielding a flaming sword. You must be careful."));
-			cutScenes.Add(new CutSceneObject(lifthrasirObject.transform, "Lifthrasir: Look, there’s Loki with Lif! I have to stop him and save her!"));
+			cutScenes.Add(new CutSceneObject(lifthrasirObject.transform, "Lifthrasir: Look, there’s Loki with Lif! I have to stop Loki and save Lif!"));
 			cutScenes.Add(new CutSceneObject(lokiObject.transform, "Lifthrasir: What is Loki doing now??"));
 			cutScenes.Add(new CutSceneObject(roosterObject.transform, "Odin: Oh, no. He is waking up the rooster. Quick, we have to stop him!"));
 			cutScenes.Add(new CutSceneObject(playerObject.transform, "Lifthrasir: What does the rooster have to do with anything? I need to save Lif!"));
