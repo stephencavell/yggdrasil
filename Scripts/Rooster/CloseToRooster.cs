@@ -165,13 +165,13 @@ public class CloseToRooster : MonoBehaviour {
 				} else {
 					Debug.Log ("End Collision");
 					PauseRoosterCrow();
-					//Destroy(this.gameObject);
 					roosterSound = false;
 					lifAnim.SetBool("roocatch", true);
 					_playerController.setControllable(false);
 					this.transform.position = new Vector2(playerObject.transform.position.x, playerObject.transform.position.y + 1);
 					playerObject.SendMessage("monitorAudio", false);
 					roocatch.Play();
+					mainCameraSound.SendMessage("PlaySuccess");
 				}
 			}
 		}

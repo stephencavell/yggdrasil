@@ -1,30 +1,20 @@
 ﻿#pragma strict
 
-public var hurtClip : AudioClip;
 public var deathClip : AudioClip;
-public var breathingClip : AudioClip;
-public var ravenClip : AudioClip;
 public var jumpStartClip : AudioClip;
-public var jumpLandClip : AudioClip;
 public var roosterCrowClip : AudioClip;
 public var walkingClip : AudioClip;
-public var trottingClip : AudioClip;
 public var runningClip : AudioClip;
 public var flappingWingsClip : AudioClip;
-public var backgroundClip : AudioClip;
+public var successClip : AudioClip;
 
-private var hurtAudio : AudioSource;
 private var deathAudio : AudioSource;
-private var breathingAudio : AudioSource;
-private var ravenAudio : AudioSource;
 private var jumpStartAudio : AudioSource;
-private var jumpLandAudio : AudioSource;
 private var roosterCrowAudio : AudioSource;
 private var walkingAudio : AudioSource;
-private var trottingAudio : AudioSource;
 private var runningAudio : AudioSource;
 private var flappingWingsAudio : AudioSource;
-private var backgroundAudio : AudioSource;
+private var successAudio : AudioSource;
 
 var qSamples: int = 1024;  // array size
 var refValue: float = 0.1; // RMS value for 0 dB
@@ -39,14 +29,6 @@ private var fSample: float;
 private var sources: Array = new Array();
 
 function Awake() {
-    hurtAudio = gameObject.AddComponent(AudioSource);
-    hurtAudio.clip = hurtClip;
-    hurtAudio.loop = false;
-    hurtAudio.playOnAwake = false;
-    hurtAudio.volume = 0.8;
-    hurtAudio.dopplerLevel = 0.0;
-    sources.Push(hurtAudio);
-
     deathAudio = gameObject.AddComponent(AudioSource);
     deathAudio.clip = deathClip;
     deathAudio.loop = false;
@@ -54,22 +36,6 @@ function Awake() {
     deathAudio.volume = 0.8;
     deathAudio.dopplerLevel = 0.0;
     sources.Push(deathAudio);
-    
-    breathingAudio = gameObject.AddComponent(AudioSource);
-    breathingAudio.clip = breathingClip;
-    breathingAudio.loop = false;
-    breathingAudio.playOnAwake = false;
-    breathingAudio.volume = 0.8;
-    breathingAudio.dopplerLevel = 0.0;
-    sources.Push(breathingAudio);
-    
-    ravenAudio = gameObject.AddComponent(AudioSource);
-    ravenAudio.clip = ravenClip;
-    ravenAudio.loop = false;
-    ravenAudio.playOnAwake = false;
-    ravenAudio.volume = 0.8;
-    ravenAudio.dopplerLevel = 0.0;
-    sources.Push(ravenAudio);
 
     jumpStartAudio = gameObject.AddComponent(AudioSource);
     jumpStartAudio.clip = jumpStartClip;
@@ -78,14 +44,6 @@ function Awake() {
     jumpStartAudio.volume = 0.5;
     jumpStartAudio.dopplerLevel = 0.0;
     sources.Push(jumpStartAudio);
-
-    jumpLandAudio = gameObject.AddComponent(AudioSource);
-    jumpLandAudio.clip = jumpLandClip;
-    jumpLandAudio.loop = false;
-    jumpLandAudio.playOnAwake = false;
-    jumpLandAudio.volume = 0.4;
-    jumpLandAudio.dopplerLevel = 0.0;
-    sources.Push(jumpLandAudio);
 
     roosterCrowAudio = gameObject.AddComponent(AudioSource);
     roosterCrowAudio.clip = roosterCrowClip;
@@ -111,14 +69,6 @@ function Awake() {
     walkingAudio.dopplerLevel = 0.0;
     sources.Push(walkingAudio);
 
-    trottingAudio = gameObject.AddComponent(AudioSource);
-    trottingAudio.clip = trottingClip;
-    trottingAudio.loop = false;
-    trottingAudio.playOnAwake = false;
-    trottingAudio.volume = 0.8;
-    trottingAudio.dopplerLevel = 0.0;
-    sources.Push(trottingAudio);
-
     runningAudio = gameObject.AddComponent(AudioSource);
     runningAudio.clip = runningClip;
     runningAudio.loop = false;
@@ -127,13 +77,13 @@ function Awake() {
     runningAudio.dopplerLevel = 0.0;
     sources.Push(runningAudio);
     
-    backgroundAudio = gameObject.AddComponent(AudioSource);
-    backgroundAudio.clip = backgroundClip;
-    backgroundAudio.loop = true;
-    backgroundAudio.volume = 2.0;
-    backgroundAudio.dopplerLevel = 0.0;
-    sources.Push(backgroundAudio);
-    backgroundAudio.Play();
+    successAudio = gameObject.AddComponent(AudioSource);
+    successAudio.clip = successClip;
+    successAudio.loop = false;
+    successAudio.playOnAwake = false;
+    successAudio.volume = 10.6;
+    successAudio.dopplerLevel = 0.0;
+    sources.Push(successAudio);
     
     samples = new float[qSamples];
     spectrum = new float[qSamples];
@@ -147,36 +97,10 @@ function Update() {
 	}
 }
 
-function PlayHurt() {
-	/*
-	if(hurtAudio.isPlaying==false){
-    	hurtAudio.Play();
-	}
-	*/
-}
-
 function PlayDeath() {
-	/*
     if(deathAudio.isPlaying==false){
     	deathAudio.Play();
 	}
-	*/
-}
-
-function PlayBreathing() {
-	/*
-	if(breathingAudio.isPlaying==false){
-		breathingAudio.Play();
-	}
-	*/
-}
-
-function PlayRaven() {
-	/*
-	if(ravenAudio.isPlaying==false){
-    	ravenAudio.Play();
-    }
-    */
 }
 
 function PlayWalking() {
@@ -204,15 +128,6 @@ function PlayJumpStart() {
 	if(jumpStartAudio.isPlaying==false){
     	jumpStartAudio.Play();
     }
-}
-
-function PlayJumpLand() {
-	Debug.Log("Landed");
-	/*
-	if(jumpLandAudio.isPlaying==false){
-    	jumpLandAudio.Play();
-    }
-    */
 }
 
 function PlayRoosterCrow() {
@@ -244,6 +159,14 @@ function PauseWingsFlapping() {
 	Debug.Log("Pause Rooster Crow");
 	if(flappingWingsAudio.isPlaying){
     	flappingWingsAudio.Pause();
+    }
+}
+
+
+function PlaySuccess() {
+	Debug.Log("Success");
+	if(successAudio.isPlaying==false){
+    	successAudio.Play();
     }
 }
 
