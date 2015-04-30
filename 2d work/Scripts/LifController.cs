@@ -6,6 +6,10 @@ public class LifController : MonoBehaviour {
 	public float maxSpeed = 10f;
 	public float walkSpeed = 10f;
 	public float runSpeed = 15f;
+
+	public AudioSource walk;
+	public AudioSource jump;
+
 	bool facingRight = true;
 
 	Animator anim;
@@ -36,6 +40,11 @@ public class LifController : MonoBehaviour {
 
 			float move = Input.GetAxis ("Horizontal");
 
+			if(grounded && move !=0 && !walk.isPlaying)
+			{
+				walk.Play();
+			}
+
 			anim.SetFloat("Speed", Mathf.Abs (move));
 			anim.SetFloat ("vSpeed", rigidbody2D.velocity.y);
 
@@ -54,6 +63,7 @@ public class LifController : MonoBehaviour {
 	void Update() {
 		if(isControllable==true){
 			if (grounded && Input.GetKeyDown ("up")) {
+				jump.Play();
 				anim.SetBool ("Ground", false);
 				rigidbody2D.AddForce (new Vector2 (0, jumpForce));
 			}

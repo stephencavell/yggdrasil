@@ -219,11 +219,11 @@ function PlayJumpLand() {
 
 function PlayRoosterCrow() {
 	Debug.Log("Play Rooster Crow");
-	/*
+
 	if(roosterCrowAudio.isPlaying==false){
     	roosterCrowAudio.Play();
     }
-    */
+
 }
 
 function PauseRoosterCrow() {

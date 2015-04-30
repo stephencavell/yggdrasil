@@ -2,7 +2,18 @@ fileFormatVersion: 2
 guid: ae07b77effd864910ae195b6d307821e
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - hurtClip: {instanceID: 0}
+  - deathClip: {instanceID: 0}
+  - breathingClip: {instanceID: 0}
+  - ravenClip: {instanceID: 0}
+  - jumpStartClip: {instanceID: 0}
+  - jumpLandClip: {instanceID: 0}
+  - roosterCrowClip: {instanceID: 0}
+  - walkingClip: {instanceID: 0}
+  - trottingClip: {instanceID: 0}
+  - runningClip: {instanceID: 0}
+  - backgroundClip: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

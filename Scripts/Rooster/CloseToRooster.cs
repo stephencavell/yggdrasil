@@ -10,6 +10,7 @@ public class CloseToRooster : MonoBehaviour {
 	
 	private GameObject rooster;
 	public Animator rooanim;
+	public AudioSource wingFlap;
 	
 	private int position;
 	public int newPositionX1;
@@ -51,6 +52,8 @@ public class CloseToRooster : MonoBehaviour {
 	void Update () {
 		//rooster = GameObject.FindGameObjectWithTag ("Rooster");
 		rooanim.SetBool ("flying", flying);
+		if (flying && !wingFlap.isPlaying)
+			wingFlap.Play ();
 		if(this.transform!=null){
 			PlayRoosterCrow();
 			if(flying == true){
