@@ -14,7 +14,7 @@ public class LifController : MonoBehaviour {
 
 	public bool grounded = false;
 	public Transform groundCheck;
-	float groundRadius = 0.2f;
+	float groundRadius = 0.1f;
 	public LayerMask whatIsGround;
 
 	public float jumpForce = 10f;
