@@ -159,8 +159,8 @@ public class CloseToRooster : MonoBehaviour {
 		if(this.transform.position.x >= EndPointX-2){
 			flying = false;
 			roosterSound = true;
-			this.transform.position = new Vector3(EndPointX, EndPointY, 0);
 			_mainCamera.target = playerObject.transform;
+			this.transform.position = new Vector3(EndPointX, EndPointY, 0);
 			_playerController.setControllable(true);
 			mainCameraSound.SendMessage("PauseWingsFlapping");
 		}
