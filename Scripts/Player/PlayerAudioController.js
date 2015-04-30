@@ -138,31 +138,40 @@ function Update() {
 }
 
 function PlayHurt() {
+	/*
 	if(hurtAudio.isPlaying==false){
     	hurtAudio.Play();
 	}
+	*/
 }
 
 function PlayDeath() {
+	/*
     if(deathAudio.isPlaying==false){
     	deathAudio.Play();
 	}
+	*/
 }
 
 function PlayBreathing() {
+	/*
 	if(breathingAudio.isPlaying==false){
 		breathingAudio.Play();
 	}
+	*/
 }
 
 function PlayRaven() {
+	/*
 	if(ravenAudio.isPlaying==false){
     	ravenAudio.Play();
     }
+    */
 }
 
 function PlayWalking() {
-	//Debug.Log("Walking");
+	Debug.Log("Walking");
+	/*
 	if(trottingAudio.isPlaying==true){
 		trottingAudio.Pause();
 	}
@@ -172,23 +181,12 @@ function PlayWalking() {
 	if(walkingAudio.isPlaying==false){
     	walkingAudio.Play();
     }
-}
-
-function PlayTrotting() {
-	//Debug.Log("Trotting");
-	if(walkingAudio.isPlaying==true){
-		walkingAudio.Pause();
-	}
-	if(runningAudio.isPlaying==true){
-		runningAudio.Pause();
-	}
-	if(trottingAudio.isPlaying==false){
-    	trottingAudio.Play();
-    }
+    */
 }
 
 function PlayRunning() {
-	//Debug.Log("Running");
+	Debug.Log("Running");
+	/*
 	if(walkingAudio.isPlaying==true){
 		walkingAudio.Pause();
 	}
@@ -198,32 +196,43 @@ function PlayRunning() {
 	if(runningAudio.isPlaying==false){
     	runningAudio.Play();
     }
+    */
 }
 
 function PlayJumpStart() {
-	//Debug.Log("Jumped");
+	Debug.Log("Jumped");
+	/*
 	if(jumpStartAudio.isPlaying==false){
     	jumpStartAudio.Play();
     }
+    */
 }
 
 function PlayJumpLand() {
-	//Debug.Log("Landed");
+	Debug.Log("Landed");
+	/*
 	if(jumpLandAudio.isPlaying==false){
     	jumpLandAudio.Play();
     }
+    */
 }
 
 function PlayRoosterCrow() {
+	Debug.Log("Play Rooster Crow");
+	/*
 	if(roosterCrowAudio.isPlaying==false){
     	roosterCrowAudio.Play();
     }
+    */
 }
 
 function PauseRoosterCrow() {
+	Debug.Log("Pause Rooster Crow");
+	/*
 	if(roosterCrowAudio.isPlaying){
     	roosterCrowAudio.Pause();
     }
+    */
 }
 
 function AnalyzeSound(aud:AudioSource){

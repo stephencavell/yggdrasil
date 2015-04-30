@@ -40,10 +40,8 @@ public class LifController : MonoBehaviour {
 			anim.SetFloat ("vSpeed", rigidbody2D.velocity.y);
 
 			if(Input.GetKey(KeyCode.LeftShift)||Input.GetKey(KeyCode.RightShift)){
-				Debug.Log("Running");
 				rigidbody2D.velocity = new Vector2 (move * runSpeed, rigidbody2D.velocity.y);
 			} else {
-				Debug.Log("Walking");
 				rigidbody2D.velocity = new Vector2 (move * walkSpeed, rigidbody2D.velocity.y);
 			}
 			if(move > 0 && !facingRight)
