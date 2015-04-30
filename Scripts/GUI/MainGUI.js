@@ -87,12 +87,13 @@ function audioBarLengthUpdate(){
 		roosterQuickness-=1;
 	}
 	if(roosterQuickness<=0){
-		Debug.Log("In here. Death Time: "+deathTime);
-		if(deathTime >= 5){
+		//Debug.Log("In here. Death Time: "+deathTime);
+		if(deathTime >= 1){
 			this.SendMessage("RevertToCheckpoint");
 			roosterScript.SendMessage("RevertToCheckpoint");
 			ResetRoosterTime();
 			deathTime = 0;
+			anim.SetBool("death",false);
 		} else if(deathTime==0){
 			anim = this.GetComponent(Animator);
 			anim.SetBool("death",true);

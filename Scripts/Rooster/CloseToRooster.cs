@@ -79,7 +79,7 @@ public class CloseToRooster : MonoBehaviour {
 			}
 		} else {
 			endTimeout = endTimeout+Time.deltaTime;
-			if(endTimeout>=2){
+			if(endTimeout>=0.27){
 				Application.LoadLevel("Ending");
 			}
 		}
