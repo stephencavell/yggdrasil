@@ -1,0 +1,762 @@
+fileFormatVersion: 2
+guid: 9fa8ce1e67a4d41aa8302334b592c735
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Loki_0
+    21300002: Loki_1
+    21300004: Loki_2
+    21300006: Loki_3
+    21300008: Loki_4
+    21300010: Loki_5
+    21300012: Loki_6
+    21300014: Loki_7
+    21300016: Loki_8
+    21300018: Loki_9
+    21300020: Loki_10
+    21300022: Loki_11
+    21300024: Loki_12
+    21300026: Loki_13
+    21300028: Loki_14
+    21300030: Loki_15
+    21300032: Loki_16
+    21300034: Loki_17
+    21300036: Loki_18
+    21300038: Loki_19
+    21300040: Loki_20
+    21300042: Loki_21
+    21300044: Loki_22
+    21300046: Loki_23
+    21300048: Loki_24
+    21300050: Loki_25
+    21300052: Loki_26
+    21300054: Loki_27
+    21300056: Loki_28
+    21300058: Loki_29
+    21300060: Loki_30
+    21300062: Loki_31
+    21300064: Loki_32
+    21300066: Loki_33
+    21300068: Loki_34
+    21300070: Loki_35
+    21300072: Loki_36
+    21300074: Loki_37
+    21300076: Loki_38
+    21300078: Loki_39
+    21300080: Loki_40
+    21300082: Loki_41
+    21300084: Loki_42
+    21300086: Loki_43
+    21300088: Loki_44
+    21300090: Loki_45
+    21300092: Loki_46
+    21300094: Loki_47
+    21300096: Loki_48
+    21300098: Loki_49
+    21300100: Loki_50
+    21300102: Loki_51
+    21300104: Loki_52
+    21300106: Loki_53
+    21300108: Loki_54
+    21300110: Loki_55
+    21300112: Loki_56
+    21300114: Loki_57
+    21300116: Loki_58
+    21300118: Loki_59
+    21300120: Loki_60
+    21300122: Loki_61
+    21300124: Loki_62
+    21300126: Loki_63
+    21300128: Loki_64
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 1000
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Loki_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 961
+        width: 164
+        height: 250
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_1
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 998
+        width: 138
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_2
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 958
+        width: 75
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_3
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 1165
+        width: 29
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_4
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 1147
+        width: 55
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_5
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 924
+        width: 262
+        height: 266
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_6
+      rect:
+        serializedVersion: 2
+        x: 1605
+        y: 932
+        width: 255
+        height: 259
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_7
+      rect:
+        serializedVersion: 2
+        x: 1864
+        y: 932
+        width: 253
+        height: 258
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_8
+      rect:
+        serializedVersion: 2
+        x: 2125
+        y: 932
+        width: 181
+        height: 261
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_9
+      rect:
+        serializedVersion: 2
+        x: 2318
+        y: 932
+        width: 178
+        height: 261
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_10
+      rect:
+        serializedVersion: 2
+        x: 2565
+        y: 682
+        width: 362
+        height: 506
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_11
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 1087
+        width: 49
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_12
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 1033
+        width: 54
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_13
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 1090
+        width: 60
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_14
+      rect:
+        serializedVersion: 2
+        x: 1339
+        y: 924
+        width: 263
+        height: 267
+      alignment: 9
+      pivot: {x: .721512556, y: .610100389}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_15
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 921
+        width: 205
+        height: 267
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_16
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 941
+        width: 86
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_17
+      rect:
+        serializedVersion: 2
+        x: 1468
+        y: 1001
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_18
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 918
+        width: 223
+        height: 269
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_19
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 636
+        width: 293
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_20
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 636
+        width: 296
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_21
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 633
+        width: 460
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_22
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 633
+        width: 457
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_23
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 633
+        width: 454
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_24
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 633
+        width: 454
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_25
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 346
+        width: 228
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_26
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 309
+        width: 206
+        height: 314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_27
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 310
+        width: 206
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_28
+      rect:
+        serializedVersion: 2
+        x: 2614
+        y: 587
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_29
+      rect:
+        serializedVersion: 2
+        x: 2663
+        y: 587
+        width: 37
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_30
+      rect:
+        serializedVersion: 2
+        x: 2740
+        y: 567
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_31
+      rect:
+        serializedVersion: 2
+        x: 2755
+        y: 567
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_32
+      rect:
+        serializedVersion: 2
+        x: 2775
+        y: 567
+        width: 46
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_33
+      rect:
+        serializedVersion: 2
+        x: 2720
+        y: 553
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_34
+      rect:
+        serializedVersion: 2
+        x: 2735
+        y: 550
+        width: 25
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_35
+      rect:
+        serializedVersion: 2
+        x: 2763
+        y: 550
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_36
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 450
+        width: 114
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_37
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 427
+        width: 79
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_38
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 430
+        width: 81
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_39
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 322
+        width: 193
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_40
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 321
+        width: 309
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_41
+      rect:
+        serializedVersion: 2
+        x: 1585
+        y: 318
+        width: 307
+        height: 223
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_42
+      rect:
+        serializedVersion: 2
+        x: 1933
+        y: 341
+        width: 307
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_43
+      rect:
+        serializedVersion: 2
+        x: 2289
+        y: 361
+        width: 307
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_44
+      rect:
+        serializedVersion: 2
+        x: 2804
+        y: 320
+        width: 89
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_45
+      rect:
+        serializedVersion: 2
+        x: 2736
+        y: 372
+        width: 45
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_46
+      rect:
+        serializedVersion: 2
+        x: 2784
+        y: 375
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_47
+      rect:
+        serializedVersion: 2
+        x: 2723
+        y: 355
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_48
+      rect:
+        serializedVersion: 2
+        x: 2738
+        y: 355
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_49
+      rect:
+        serializedVersion: 2
+        x: 2689
+        y: 323
+        width: 31
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_50
+      rect:
+        serializedVersion: 2
+        x: 2755
+        y: 323
+        width: 31
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_51
+      rect:
+        serializedVersion: 2
+        x: 2789
+        y: 323
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_52
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 35
+        width: 232
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_53
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 99
+        width: 181
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_54
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 80
+        width: 196
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_55
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 42
+        width: 197
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_56
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 46
+        width: 195
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_57
+      rect:
+        serializedVersion: 2
+        x: 1144
+        y: 48
+        width: 195
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_58
+      rect:
+        serializedVersion: 2
+        x: 1361
+        y: 105
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_59
+      rect:
+        serializedVersion: 2
+        x: 1462
+        y: 131
+        width: 100
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_60
+      rect:
+        serializedVersion: 2
+        x: 1580
+        y: 137
+        width: 102
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_61
+      rect:
+        serializedVersion: 2
+        x: 1709
+        y: 13
+        width: 480
+        height: 276
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_62
+      rect:
+        serializedVersion: 2
+        x: 2200
+        y: 13
+        width: 124
+        height: 276
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_63
+      rect:
+        serializedVersion: 2
+        x: 2350
+        y: 39
+        width: 255
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Loki_64
+      rect:
+        serializedVersion: 2
+        x: 2608
+        y: 39
+        width: 273
+        height: 223
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
